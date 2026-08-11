@@ -1,0 +1,371 @@
+.Create {
+  padding: 20px;
+  height: 89vh;
+  overflow: hidden;
+  overflow-y: auto;
+  background: transparent linear-gradient(180deg, #ffffff 0%, #b8eaff 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 0 0 4px #000000;
+  margin: 18px;
+  border-radius: 10px;
+}
+
+
+.Create .back_btn_holder {
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.Create .back_btn_holder .back-btn {
+  margin-right: 5px;
+}
+
+
+
+/* order-details  style */
+.Create .from-to-holder .order-details {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: transparent linear-gradient(180deg, #ffffff 0%, #b8eaff 100%) 0% 0% no-repeat padding-box;
+  border: 1px solid #006e9c;
+}
+
+.Create .shipping-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.Create .shipping-table td {
+  padding: 15px;
+  vertical-align: top;
+}
+
+.Create .shipping-from,
+.Create .shipping-to {
+  font-size: 14px;
+  color: #333;
+}
+
+.Create .shipping-from h6,
+.Create .shipping-to h6 {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.Create .shipping-from p,
+.Create .shipping-to p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
+}
+
+.Create .order-title {
+  margin-bottom: 15px;
+}
+
+.Create .text-highlight {
+  color: #008296 !important;
+  font-weight: 600;
+}
+
+.Create .span-font {
+  color: #6c757d !important;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.Create .order-title h6 {
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.Create .order-title span {
+  margin-left: 8px;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.Create .pending-table .order-table .order-details {
+  width: 500px;
+}
+
+.Create .brown-text {
+  color: #c45500;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.Create .oder-detail-holder .heading-holder h6 {
+  color: #c45500;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.Create .order-info p {
+  font-size: 13px;
+  font-weight: 500;
+  color: #000;
+}
+
+.Create .pending-table .order-table .product-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* package-details-section Styles */
+
+.package-details-section {
+  background-color: #ffffff;
+  border: 11%;
+  border-radius: 8px;
+  margin-top: 20px;
+  background: transparent linear-gradient(180deg, #ffffff 0%, #b8eaff 100%) 0% 0% no-repeat padding-box;
+}
+
+.package-details-section .section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.package-details-section .form-label {
+  font-size: 12px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* Row Styling */
+.package-details-section .detail-row {
+    margin-bottom: 15px;
+    border-top: 1px solid #6c757d;
+ /* border-bottom: 1px solid #6c757d; */
+    padding: 12px 0px;
+    border-radius: 0px;
+}
+
+.package-details-section .detail-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+/* Input Styles */
+.package-details-section .detail-input,
+.package-details-section .dimension-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.package-details-section .detail-input:read-only,
+.package-details-section .dimension-input:read-only {
+  background-color: #f9f9f9;
+  color: #555;
+}
+
+/* Dimensions Group Styling */
+.package-details-section .dimensions-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.package-details-section .dimension-item {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+.package-details-section .dimension-item .form-label {
+  font-size: 12px;
+  color: #000;
+  font-weight: 500;
+}
+
+.package-details-section .dimension-label {
+  font-size: 12px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* React Select Styling */
+.package-details-section .react-select__control {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  color: #333;
+  min-height: 40px;
+  margin-bottom: 10px;
+}
+
+.package-details-section .react-select__control--is-focused {
+  border-color: #007bff;
+  /* Bootstrap primary color */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.package-details-section .react-select__value-container {
+  padding: 5px 10px;
+}
+
+.package-details-section .react-select__placeholder {
+  color: #888;
+}
+
+.package-details-section .react-select__menu {
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.package-details-section .react-select__menu-list {
+  padding: 0;
+}
+
+.package-details-section .react-select__option {
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.package-details-section .react-select__option--is-focused {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.package-details-section .react-select__option--is-selected {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+/* Checkbox Styling */
+.package-details-section .checkbox-container {
+  margin-top: 10px;
+}
+
+.package-details-section .detail-checkbox .form-check-label {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Total_EasyShip style start*/
+.Total_EasyShip .fee-info {
+  background-color: #e6e6e6;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.Total_EasyShip .fee-info p {
+  font-size: 14px;
+  color: #000;
+  font-weight: 500;
+}
+
+/* Total_EasyShip style end*/
+
+/* warning style start */
+.warning-text {
+  color: #ff6a00;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  margin-top: 15px;
+}
+
+/* warning style end */
+
+/* checkbox-container style start */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.checkbox-container label {
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* checkbox-container style end */
+
+/* schedule-button style start */
+.schedule-button {
+  background-color: #ffd814;
+  color: black;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+.Back-button {
+  background-color: #ccc;
+  color: black;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.dashboradopen .addcolbtn {
+     width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboradopen  .rowlwidth{
+  width: 100%;
+}
+
+.varimggdiv {
+  position: relative !important;
+}
+
+.varimggdiv .dlticon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 16px;
+  color: #000;
+  background-color: #fff;
+
+}
+
+/* schedule-button style end */
+
+@media (max-width: 768px) {
+  .Create .shipping-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

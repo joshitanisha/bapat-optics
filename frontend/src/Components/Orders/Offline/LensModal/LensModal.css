@@ -1,0 +1,574 @@
+.product-container {
+  padding: 1%;
+}
+
+.product-title {
+  font-weight: 600;
+  margin-bottom: 2rem;
+  font-size: 18px;
+  color:#000
+}
+
+.product-input-wrapper {
+  background: #f9f9f9;
+  border-radius: 8px;
+padding: 1% !important;
+   border: 1px solid #006e9c;
+}
+
+.no_wrap_text{
+    margin-bottom: 0px;
+    text-wrap-mode: nowrap;
+}
+
+.input-icon {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon .icon {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.user-input {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  width: 100%;
+}
+
+/* .product-details-card {
+  background-color: #fff;
+  border: 1px solid #eee;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  align-items: center;
+  height: 100%;
+} */
+
+.product-image-container {
+  flex-shrink: 0;
+}
+
+.product-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    aspect-ratio: 1/1;
+    border: 1px solid #ccc;
+}
+
+.prescription_left_text {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+
+.product-info {
+    flex-grow: 1;
+    font-size: 14px;
+    color: #000;
+    font-weight: 400;
+}
+
+.product-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 15px
+}
+
+.product-price {
+  color: #28a745;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.add-btn-floating  {
+    position: absolute;
+    bottom: -13px;
+    right: 15px;
+     display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.add-btn-floating .btn.btn-dark{
+border-radius: 25px;
+    padding: 8px 18px;
+    font-weight: 500;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.add-btn-floating .btn.btn-dark:hover {
+  background-color: #222;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* ------------------- Responsive Styles ------------------- */
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 768px) {
+ 
+
+  .product-details-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+
+  .product-info {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+
+  .add-btn-floating {
+    position: relative;
+    margin-top: 1rem;
+    right: 0;
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .product-image {
+    max-width: 100%;
+  }
+
+
+}
+
+
+
+
+.Lens_Details_Modal {}
+
+.Lens_Details_Modal .modal-content {
+    position: relative;
+}
+
+
+.Lens_Details_Modal .modal-content .modal-header {
+    height: 0px;
+    position: absolute;
+    right: 0;
+    border: none;
+    margin-top: 6px;
+    font-size: 13px;
+    z-index: 2;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div {}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .title_text {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder {
+    margin-top: 27px;
+    max-height: 600px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder {
+    display: flex;
+    align-items: center;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #ECECEC;
+    margin-bottom: 20px;
+    /* padding: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .left_img_div {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .left_img_div .img_class {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    align-items: flex-start;
+    background: #f5f5f5;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .first_div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .left_text_div {}
+
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .left_text_div .label_text {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .left_text_div .inner_li {
+    font-size: 14px;
+    color: #666666;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .icon_holder {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #030145;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .icon_holder .icon {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .price_div {
+    margin-left: auto;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .price_div .rate_descn_text {
+    color: #858585;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .price_div .price_text {
+    color: #59C9F9;
+    font-weight: 500;
+    margin-bottom: 0px;
+    font-size: 14px;
+    text-align: end;
+}
+
+.Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .price_div .price_text .mrp_text {
+    color: #858585;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    text-decoration: line-through;
+}
+
+
+
+@media (min-width: 0px) and (max-width: 575px) {
+    .Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .left_text_div .label_text {
+        font-size: 14px;
+    }
+
+    .Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder {
+        padding: 6px;
+        flex-direction: column;
+    }
+
+    .Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .left_text_div .inner_li {
+        font-size: 13px;
+    }
+
+    .Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .price_div .price_text ,
+    .Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .price_div .price_text .mrp_text {
+        font-size: 13px;
+    }
+
+    .Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .price_div .rate_descn_text {
+        font-size: 13px;
+    }
+
+    .Lens_Details_Modal .modal-content .modal-body .modal_content_div .title_text {
+        font-size: 15px;
+    }
+
+    .Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .left_img_div .img_class {
+        width: 70px;
+        height: 70px;
+    }
+
+
+    .Lens_Details_Modal .modal-content .modal-body .modal_content_div .all_cards_holder .row_holder .text_holder .left_text_div .descn_text {
+        font-size: 13px;
+    }
+}
+
+
+.want_modal .modal_sec {
+    padding: 10px;
+}
+
+.want_modal .modal_sec .title_div {
+    text-align: center;
+}
+
+.want_modal .modal_sec .h4title {
+    font-weight: normal;
+    font-size: 30px;
+    color: #000;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.want_modal .modal_sec .btnflex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.want_modal .modal_sec .btnflex .ortext {
+    margin-bottom: 0px;
+    font-size: 18px;
+    margin: 0px 10px;
+    width: 100px;
+    margin: auto;
+    text-align: center;
+}
+
+.want_modal .modal_sec .com-btn {
+    border: 1px solid #00A0E3;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5px 15px;
+    background-color: #fff;
+    color: #00A0E3;
+    margin: 0px 5px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.want_modal .modal_sec .com-btn:hover {
+    border: 1px solid #00A0E3;
+    background-color: #00A0E3;
+    color: #fff;
+}
+
+.want_modal .modal_sec .singlep {
+    margin-top: 15px;
+    margin-bottom: 0px;
+    color: #000;
+    font-size: 18px;
+}
+
+.want_modal .modal_sec .continue-btn {
+    border: 1px solid #00A0E3;
+    background-color: #00A0E3;
+    color: #fff;
+    border: 1px solid #00A0E3;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5px 15px;
+    border-radius: 100px;
+}
+
+.want_modal .modal_sec .nav {
+    justify-content: center;
+}
+
+.want_modal .modal_sec .nav-item {
+    width: 33%;
+    text-align: center;
+}
+
+.want_modal .modal_sec .nav-pills .nav-link {
+    border: 1px solid #00A0E3;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5px 15px;
+    background-color: #fff;
+    color: #00A0E3;
+    margin: 0px 5px;
+    border-radius: 10px;
+    /* width: 100%; */
+}
+
+.want_modal .modal_sec .nav-pills .nav-link.active {
+    background-color: #00A0E3 !important;
+    color: #fff !important;
+}
+
+
+
+.want_modal .tabdata {
+    padding: 15px;
+    font-size: 15px;
+    color: #000;
+    font-weight: 500;
+}
+
+.want_modal .modal-content .modal-body .content_div .bottom .eye_section .table_header .eye_spec_title {
+    font-size: 13px;
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.want_modal .modal-content .modal-body .content_div .bottom .eye_section .table_header .top_text {
+    font-size: 13px;
+    color: #000;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.want_modal .modal-content .modal-body .content_div .bottom .eye_section .table_row {}
+
+.want_modal .modal-content .modal-body .content_div .bottom .eye_section .table_row .left_text {}
+
+.want_modal .input_group {
+    margin-bottom: 0px;
+}
+
+.want_modal .modal-content .modal-body .content_div .bottom .eye_section .table_row .left_text {
+    font-size: 13px;
+    color: #000;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.want_modal .uploadphotosec .box {
+    width: 137px;
+    height: 137px;
+    background: #e1e1e1;
+    border: 1px solid #dedede;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+.want_modal .uploadphotosec .uploadpp{
+    margin: 10px 0px 0px;
+    font-size: 14px;
+    color: #000;
+}
+.want_modal .uploadphotosec .box .addicon{
+   width: 100%;
+   height: 100%;
+   object-fit: fill;
+}
+
+.want_modal .uploadphotosec .box .addicon {
+    width: 25px;
+    height: 25px;
+}
+.want_modal .tabdata .socialinfobox{
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 15px;
+}
+.want_modal .tabdata .socialinfobox .caltxt{
+    font-size: 16px;
+    margin-bottom: 0px;
+    color: #000;
+}
+.want_modal .tabdata .socialinfobox .linkp{
+    font-size: 16px;
+    margin-bottom: 0px;
+   color: #00a0e3;
+   text-decoration: underline;
+}
+.want_modal .tabdata .socialinfobox  .whatsappicon{
+    width: 30px;
+}
+
+
+
+@media (min-width: 0px) and (max-width: 991px) {
+    .want_modal .modal_sec .nav-pills .nav-link {
+        font-size: 14px;
+    }
+
+    .want_modal .modal_sec .nav-item {
+        width: 70%;
+        margin-bottom: 10px;
+    }
+
+    .want_modal .modal_sec .h4title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .want_modal .tabdata {
+        padding: 0px;
+    }
+    .want_modal .modal_sec .com-btn {
+    font-size: 14px;
+    padding: 5px 5px;
+    margin: 0px 5px;
+}
+}
+
+@media (min-width: 0px) and (max-width: 575px) {
+
+
+
+    .want_modal .modal-content .modal-body .content_div .bottom .eye_section {
+        margin-bottom: 20px;
+    }
+
+    .want_modal .modal-content .modal-body .content_div .bottom .eye_section .table_header .eye_spec_title,
+    .want_modal .modal-content .modal-body .content_div .bottom .eye_section .table_row .left_text {
+        font-size: 11px;
+    }
+
+    .want_modal .modal-content .modal-body .content_div .bottom .eye_section .table_header .top_text {
+        font-size: 10px;
+    }
+    .want_modal .modal_sec {
+        
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+
+    .want_modal .modal-content .modal-body .content_div .bottom .eye_section {
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+
+    .want_modal .modal-content .modal-body .content_div .bottom .eye_section {
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,38 @@
+.Successfull_Modal .modal-header {
+  border: none;
+}
+
+.Successfull_Modal .modal-body {
+  border: none;
+  z-index: 9999999999999999999;
+}
+
+.Successfull_Modal .modal-content {
+  border: none;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 17px #bda4a400;
+  border: 1px solid #f6f6f6;
+  border-radius: 10px;
+}
+
+.modal-backdrop.show {
+  opacity: 0.1 !important;
+  background: transparent;
+}
+
+.Successfull_Modal .modal-body p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.Successfull_Modal .modal-body h4 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #f05340;
+  text-decoration: underline;
+}
+.Successfull_Modal {
+  z-index: 9999999999999 !important;
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.profcymasolutions.urban_prime_mart",
+      "sha256_cert_fingerprints": [
+        "EA:A5:D2:F9:20:7B:4A:57:73:D2:F7:A8:9B:51:9D:BD:AE:AA:81:E8:1A:9A:AC:2D:D2:52:06:06:7C:CC:F6:41"
+      ]
+    }
+  }
+]

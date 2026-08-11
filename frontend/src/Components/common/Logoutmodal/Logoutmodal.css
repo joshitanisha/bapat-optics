@@ -1,0 +1,14 @@
+.logoutmodal .modal-title {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.logoutmodal .modal-header {
+    border-bottom: 1px solid #ccc;
+}
+
+.logoutmodal .yesbtn {
+    background-color: red;
+    color: #fff;
+    border: 0;
+}

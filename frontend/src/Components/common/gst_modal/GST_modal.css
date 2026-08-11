@@ -1,0 +1,28 @@
+.GST_modal .modal-content .modal-body .btns_holder .Black_btn_holder{
+    width: 100%;
+}
+
+.GST_modal .modal-content .modal-body .btns_holder .Black_btn_holder .Black_Btn {
+    width: 100%;
+    padding: 10px 10px;
+}
+
+
+.GST_modal .title {
+    color: #000;
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.GST_modal  .modal-content .modal-body .close_img_div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.GST_modal  .modal-content .modal-body .close_img_div .close_img {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+}

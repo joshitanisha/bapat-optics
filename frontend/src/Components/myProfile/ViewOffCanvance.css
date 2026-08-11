@@ -1,0 +1,43 @@
+.offcan.offcanvas.offcanvas-end.show {
+  height: auto;
+  overflow: scroll;
+  z-index: 9999999;
+}
+.tabss-main .css-heg063-MuiTabs-flexContainer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tabss-main .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #1d44ad;
+  border-radius: 13px;
+}
+
+.tabss-main .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+  border: 1px solid black;
+  border-radius: 13px 0px 13px 0px;
+}
+.tabss-main .css-1h9z7r5-MuiButtonBase-root-MuiTab-root:hover {
+  background-color: #ffb16e;
+  color: #fff;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.tabss-main .image-boxes {
+  width: 100%;
+  height: 200px;
+  border: 1px solid #000;
+}
+
+.tabss-main .css-1aquho2-MuiTabs-indicator {
+  background-color: transparent;
+}

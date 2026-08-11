@@ -1,0 +1,20 @@
+.save-modal .modal-content {
+  background: #006e9c 0% 0% no-repeat padding-box !important;
+  border-radius: 10px;
+  height: 201px;
+}
+
+.save-modal .modal-body {
+  text-align: center;
+}
+
+.save-modal .circle-img {
+  width: 114px;
+  height: 114px;
+}
+
+.save-modal .add-success {
+  color: #fff;
+  font-size: 25px;
+  margin-top: 24px;
+}

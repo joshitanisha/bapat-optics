@@ -1,0 +1,184 @@
+.Login {
+    background: url('../image/hiclousia_back.png');
+    height: 100vh;
+    overflow: hidden;
+    background-position: center;
+    width: 100%;
+    background-size: cover;
+}
+
+.Login .login-card {
+    width: 495px;
+    height: 440px;
+    min-height: max-content;
+    position: absolute;
+    transform: translate(0, -50%);
+    top: 50%;
+    padding: 1%;
+    background: transparent linear-gradient(180deg, #ffffff 0%, #b8eaff 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0 0 4px #000000;
+    border-radius: 10px;
+}
+
+
+
+.Login .sign-in-button {
+    width: 100%;
+    height: 37px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: #006e9c;
+    border-radius: 5px;
+    border: 0.30000001192092896px solid #FFFFFF;
+    margin-top: 12%;
+}
+
+
+
+.Login .text-holder-login {
+    color: #707070;
+}
+
+.Login .text-holder-login h2 {
+    color: #000;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.Login .text-holder-login p {
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.Login .input-group .input-group-text {
+    background: transparent;
+    font-size: 12px;
+    font-weight: bold;
+    color: #707070;
+    filter: opacity(0.5);
+    border-left: 0px;
+    border-radius: 0px;
+    height: 40px;
+    background: #fff !important;
+    border-radius: 5px;
+
+}
+
+.Login .password_section {
+    position: relative;
+}
+
+.Login .formPasword {
+    position: absolute;
+    top: 45%;
+    right: 25px;
+    transform: translate(0, -50%);
+    font-size: 15px;
+}
+
+.dummy_input {
+    display: none;
+}
+
+.Login .inputForm {
+    /* padding: 15px; */
+    border: 1px solid #6c757d;
+    /* border-bottom: 1px solid #000; */
+    border-radius: 0;
+}
+
+/* .Login input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-image: none !important;
+    background-color: transparent !important;
+    color: fieldtext !important;
+} */
+
+.Login .email_txt {
+    color: #000 !important;
+    font-weight: 600;
+}
+
+.Login .form-control-email {
+    font-size: 12px;
+    font-weight: bold;
+    color: #707070;
+    border-radius: 0px;
+    height: auto;
+    /* box-shadow: 0px 0px 3px #00000029; */
+    border-radius: 5px;
+    padding: 5px 14px 12px 14px;
+    /* background-color: #fff !important; */
+    /* background-color: red !important; */
+}
+
+/* Media  */
+@media(min-width:0px) and (max-width:320px) {
+
+
+    .Login .login-card {
+        padding: 6%;
+        width: 90%;
+        margin: auto;
+        left: 5%;
+    }
+
+    .Login .sign-in-button {
+        width: 100%;
+    }
+}
+
+@media(min-width:321px) and (max-width:485px) {
+
+
+    .Login .sign-in-button {
+        width: 100%;
+    }
+
+    .Login .login-card {
+        padding: 6%;
+        width: 90%;
+        margin: auto;
+        left: 5%;
+    }
+}
+
+@media(min-width:486px) and (max-width:575px) {
+    .Login .login-card {
+        padding: 6%;
+        width: 90%;
+        margin: auto;
+        left: 5%;
+    }
+
+
+    .Login .sign-in-button {
+        width: 100%;
+    }
+}
+
+@media(min-width:576px) and (max-width:767.98px) {
+    .Login .login-card {
+        width: 309px;
+        height: 440px;
+        padding: 4%;
+    }
+}
+
+@media(min-width:768px) and (max-width:991px) {
+    .Login .login-card {
+        width: 360px;
+        height: 438px;
+        padding: 3%;
+    }
+}
+
+@media(min-width:992px) and (max-width:1200px) {
+    .Login .login-card {
+        width: 408px;
+        height: 440px;
+        padding: 3%;
+    }
+}

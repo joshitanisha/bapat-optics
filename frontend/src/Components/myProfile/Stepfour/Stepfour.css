@@ -1,0 +1,184 @@
+.stepFourMain {
+  background-color: transparent !important;
+  padding: 2%;
+  border-bottom: 1px solid #ccc !important;
+  padding-bottom: 7px;
+  margin-bottom: 30px;
+}
+
+
+
+.SellerStepMain .form-container .dropAddressDetails {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 7px;
+  margin-bottom: 30px;
+}
+
+.SellerStepMain .personal-details-form .tab-form-container .nav-tab-holder .nav-pills .nav-link {
+  background: transparent;
+  border-radius: 0px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #131313;
+  text-align: center;
+}
+
+.SellerStepMain .personal-details-form .tab-form-container .nav-tab-holder .nav-pills .nav-link.active {
+  background: transparent;
+  border-radius: 0px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #131313;
+  border-bottom: 2px solid #f88d28;
+}
+
+/* .personal-details-form .tab-form-container .Percentages-Add-Education .Add-education-btn-holder {
+  display: flex;
+  align-items: self-end;
+  justify-content: end;
+  height: 100%;
+} */
+
+.SellerStepMain .personal-details-form .tab-form-container .education-step-save-and-next .apply-btn-holder .apply_now_btn {
+  background: #05264e;
+  border: 1px solid #05264e;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+  padding: 5px 12px;
+}
+
+/* .personal-details-form .tab-form-container .education-step-save-and-next .apply-btn-holder .apply_now_btn:hover {
+  color: #ffffff;
+  background: #ee9723;
+  border: 1px solid #ee9723;
+}
+
+.personal-details-form .tab-form-container {
+  position: relative;
+  background: #ffff;
+  margin: 17px;
+  border: 1px solid #ccc;
+}
+
+.personal-details-form .tab-form-container .education-step-save-and-next {
+  bottom: 7%;
+  left: 0;
+  right: 0;
+}
+
+.personal-details-form .tab-form-container .nav {
+  display: flex;
+  justify-content: start;
+}
+
+.personal-details-form .firstthreerrr {
+  padding: 2%;
+}
+
+.personal-details-form .firmType__single-value {
+  font-size: 14px;
+}
+
+.personal-details-form .firmType__menu {
+  font-size: 14px;
+}
+
+.personal-details-form .nav-tab-holder {
+  border-bottom: 1px solid #ccc;
+  padding: 15px 0px;
+  display: flex;
+}
+
+.step-4 .personal-details-form .nav-tab-holder h6 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  margin-right: 20px;
+  margin-bottom: 0;
+  margin-top: 2px;
+}
+
+.personal-details-form .stepfourHead h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.firmmmdd {
+  font-weight: 600;
+}
+
+.personal-details-form .StepfoursaveBtn {
+  background: #f88d28 0% 0% no-repeat padding-box;
+  border-radius: 24px;
+  border: 0;
+  padding: 5px 20px;
+  margin-right: 15px;
+  margin-bottom: 1%;
+}
+
+.personal-details-form .box {
+  cursor: pointer;
+}
+
+.personal-details-form .tab-form-container .nav-tab-holder .form-check-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.personal-details-form .tab-form-container .nav-tab-holder .form-check {
+  margin-right: 15px;
+}
+
+.personal-details-form .box.active {
+  background-color: #dfe8ff;
+}
+
+.personal-details-form .Addnewadresstxt {
+  font-size: 14px;
+  color: #1c42a9;
+  font-weight: 500;
+  margin-right: 27px;
+  cursor: pointer;
+}
+
+.personal-details-form .stepFourconstContent {
+  padding: 0% 2%;
+}
+
+.personal-details-form .pickupHeadRow {
+  padding: 5px 14px;
+  margin: 5px 10px;
+}
+
+.personal-details-form .uploadBtnsec p {
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.personal-details-form .uploadGsthead h3 {
+  font-size: 12px;
+}
+
+.personal-details-form .previewImgmain .previewImg {
+  width: 94px;
+  height: 104px;
+  margin-left: 15px;
+}
+
+.personal-details-form .previewImgmain {
+  position: relative;
+}
+
+.personal-details-form .previewImgmain .circlecrossMark {
+  position: absolute;
+  top: -7px;
+  right: -5px;
+}
+
+.personal-details-form .addremoveadress {
+  display: flex;
+  justify-content: end;
+} */

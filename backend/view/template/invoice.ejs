@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice</title>
+  <base href="<%= data.base %>" />
+</head>
+
+<body style="
+      height: auto;
+      width: auto;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #000;
+      margin: 20px;
+    ">
+  <div style="padding: 5px">
+    <div style="width: 100%">
+      <div style="width: 100%; margin-bottom: 20px">
+        <table style="width: 100%; border: none">
+          <tr style="width: 100%">
+            <td style="width: 40%">
+              <div style="margin-top: 30%">
+                <p style="font-size: 15px; font-weight: 600; margin: 0">
+                  Original Copy For Recipient
+                </p>
+                <p style="font-size: 15px; font-weight: 600; color: #ff0000; margin: 0">
+                  Tax Invoice
+                </p>
+              </div>
+            </td>
+            <td style="width: 60%">
+              <img src="<%= data.base %>/public/images/MOON-LOGO.png" style="width: 100px; height: 90px" />
+              <p style="font-size: 14px; font-weight: 600; margin: 0; color: #ffd0a6; margin: 0;">
+                <span style="margin: 0; color: #1c44ac; margin: 0">The Moon</span><span style="color: #575353">
+                  .</span>
+              </p>
+              <p style="margin: 0; font-size: 12px">UIN: <span> U47912MH2023PTC398859</span></p>
+              <p style="margin: 0; font-size: 12px">GSTIN: <span>27AAICN7441B1ZK</span></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div style="width: 100%">
+        <table style="width: 100%; border: none">
+          <tr style="width: 100%; border: none">
+            <td style="width: 50%; font-size: 14px; border: none">
+              <p style="margin: 0; color: #ff0000; font-weight: 600">Bill to</p>
+              <p style="font-weight: bold; color: #575353">
+                <%= data.order.User_Address.first_name %>
+                  <%= data.order.User_Address.last_name %>
+                    <br />
+              </p>
+              <p style="margin: 0">
+                <%= data.order.User_Address.floor %> floor, <%= data.order.User_Address.building %>, <%=
+                      data.order.User_Address.apartment %>, <%= data.order.User_Address.street %>
+              </p>
+              <p style="margin: 0">
+                <%= data.order.User_Address.direction %>
+              </p>
+              <p style="margin: 0">Contact No :<span>
+                  <%= data.order.User_Address.contact_no %>
+                </span></p>
+            </td>
+            <td
+              style="width: 50%; font-size: 14px; border-left: 1px solid #1c44ac; border-top: none; border-bottom: none; border-right: none; padding-left: 10px;">
+              <p style="margin: 0">Invoice No.: <span>
+                  <%= data.order.invoice_no %> <!-- Corrected this line -->
+                </span></p>
+              <p style="margin: 0">Invoice Date: <span>
+                  <%= new Date(data.order.createdAt).toLocaleDateString() %>
+                </span></p>
+              <p style="margin: 0">Payment Mode: <span>
+                  <%= data.order.Payment_Type.name %>
+                </span></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <p style="font-size: 14px; margin: 0">
+          Phone: <%= data.order.User.contact_no %>
+        </p>
+        <p style="font-size: 14px; margin: 0">
+          Email ID: <%= data.order.User.email %>
+        </p>
+      </div>
+
+      <table style="width: 100%; border: 1px solid #000; margin-top: 15px">
+        <tr style="border: 1px solid #000">
+          <th
+            style="font-size: 13px; border: 1px solid #000; background-color: #bfbfbf; font-weight: bold; color: #1c44ac;">
+            S.No
+          </th>
+
+          <th
+            style="font-size: 13px; border: 1px solid #000; background-color: #bfbfbf; font-weight: bold; color: #1c44ac;">
+            Item & Description
+          </th>
+          <th
+            style="font-size: 13px; border: 1px solid #000; background-color: #bfbfbf; font-weight: bold; color: #1c44ac;">
+            Qty
+          </th>
+          <th
+            style="font-size: 13px; border: 1px solid #000; background-color: #bfbfbf; font-weight: bold; color: #1c44ac;">
+            Total MRP
+          </th>
+          <th
+            style="font-size: 13px; border: 1px solid #000; background-color: #bfbfbf; font-weight: bold; color: #1c44ac;">
+            Total Tax
+          </th>
+          <th
+            style="font-size: 13px; border: 1px solid #000; background-color: #bfbfbf; font-weight: bold; color: #1c44ac;">
+            Total Amount
+          </th>
+        </tr>
+
+        <% data.order.Product_Order_Details.forEach((item, index)=> { %>
+          <tr style="border: 1px solid #000">
+            <td style="font-size: 14px">
+              <%= index + 1 %>
+            </td>
+
+            <td style="font-size: 14px">
+              <%= item.Product.name %>
+            </td>
+            <td style="font-size: 14px">
+              <%= item.quantity %>
+            </td>
+            <td style="font-size: 14px">
+              <%= parseFloat(item.total_mrp).toFixed(2) %>
+            </td>
+            <td style="font-size: 14px">
+              <%= parseFloat(item.total_tax).toFixed(2) %>
+            </td>
+            <td style="font-size: 14px">
+              <%= parseFloat(item.total_amount).toFixed(2) %>
+            </td>
+          </tr>
+          <% }); %>
+      </table>
+
+      <div style="width: 100%">
+        <table style="border: none; width: 100%">
+          <tr style="width: 100%; border: none">
+            <td style="border: none; width: 50%">
+              <p style="color: #575353; font-size: 14px"></p>
+            </td>
+            <td style="border: none; color: #575353; width: 30%; text-align: right; font-size: 14px; margin: 0">
+              Tax:
+            </td>
+            <td style="border: none; color: #575353; width: 20%; text-align: center; font-size: 14px; margin: 0">
+              د.ك <%=parseFloat(data.order.total_tax).toFixed(2) %>
+            </td>
+          </tr>
+          <tr style="width: 100%; border: none">
+            <td style="border: none; width: 50%">
+              <p style="color: #575353; font-size: 14px"></p>
+            </td>
+            <td style="border: none; color: #575353; width: 30%; text-align: right; font-size: 14px; margin: 0">
+              Discount:
+            </td>
+            <td style="border: none; color: #575353; width: 20%; text-align: center; font-size: 14px; margin: 0">
+              د.ك <%= Math.abs(parseFloat(data.order.total_discount).toFixed(2)) %>
+            </td>
+          </tr>
+          <tr style="width: 100%; border: none">
+            <td style="border: none; width: 50%"></td>
+            <td style="border: none; color: #575353; width: 30%; text-align: right; font-size: 14px; margin: 0">
+              Total Payable Amount:
+            </td>
+            <td style="border: none; color: black; width: 20%; text-align: center; font-size: 15px; margin: 0">
+              د.ك <%=parseFloat(data.order.total_amount).toFixed(2) %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bapat Optics Barcode</title>
+     <base href="<%= data.base %>" />
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            width: 85mm;
+            margin: 0;
+            padding: 2mm 0;
+        }
+        
+        .design1 {
+            /* width: 5.5cm ; */
+        }
+        
+        .batdiv {
+            display: flex;
+            align-items: center;
+            page-break-inside: avoid;
+            /* margin-top: 5px; */
+            /* margin-bottom: 2px; */
+            
+        }
+        
+        .leftbd {
+            padding: 2px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            /* border-bottom: 1px dashed #ccc; */
+        }
+        
+        .contdiv {
+            width: 50%;
+            padding-left: 2mm;
+        }
+        
+        .barcodediv {
+            width: 50%;
+            text-align: center;
+        }
+        
+        .brand-name {
+            color: #000;
+            margin: 1px;
+            font-weight: 600;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+        
+        .price {
+            color: #000;
+            margin: 1px;
+            font-weight: 600;
+            font-size: 11px;
+        }
+        
+        .model-no {
+            font-weight: 600;
+            font-size: 11px;
+            color: #000;
+            margin: 2px;
+            text-transform: uppercase;
+        }
+        
+        .store-name {
+            font-size: 10px;
+            color: #000;
+            margin: 1px;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        .barcode-img {
+            /* width: 90%;
+            height: auto; */
+            width:40%;
+             height: 10px;
+            /* margin: 2px 0; */
+            text-align: center;
+            
+        }
+        
+        .barcode-number {
+            font-size: 9px;
+            color: #000;
+            font-weight: 100;
+            text-align: center;
+            margin: 1px;
+            letter-spacing: 0.5px;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .batdiv {
+                page-break-inside: avoid;
+            }
+        }
+        
+        @page {
+            /* size: 55mm auto; */
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="design1">
+        <% if (data.data && data.data.length > 0) { %>
+            <% data.data.forEach(function(item, index) { %>
+                <div class="batdiv">
+                    <div class="leftbd">
+                        <div class="contdiv">
+                            <p class="brand-name">
+                                <%= (item.Product && item.Product.Brand && item.Product.Brand.name) ? item.Product.Brand.name : '' %>
+                            </p>
+                            <p class="price">
+                                Rs.<%= (item.Product && item.Product.mrp) ? item.Product.mrp : '' %>
+                            </p>
+                            <p class="model-no">
+                                <%= (item.Product && item.Product.model_no) ? item.Product.model_no : '' %>
+                            </p>
+                        </div>
+                        <div class="barcodediv">
+                            <p class="store-name">BAPAT OPTICS</p>
+                            <% if (item.barcode) { %>
+                                <img class="barcode-img" src="<%= item.barcode %>" alt="barcode" />
+                            <% } %>
+                            <p class="barcode-number">
+                                <%= item.barcode_no || '' %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No data available</p>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+.View_All_Coupon_Code_modal .All_offers_sec .bannerdiv .btnpos {
+    left: 0px;
+    right: 0px;
+    width: 95%;
+    margin: 0px auto;
+}
+
+.View_All_Coupon_Code_modal .modal-content{
+    background: #fff !important;
+}
+
+
+.All_offers_sec .mid-sec .bannerdiv {
+    aspect-ratio: 5/2.2;
+}
+
+.All_offers_sec .bannerdiv {
+    position: relative;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.codediv {
+    position: relative;
+}
+
+.codediv .form-control {
+    background-color: #f5f5f5;
+    font-size: 16px;
+    border-radius: 10px;
+    color: #000;
+    border: 0px;
+    padding: 10px;
+}
+
+.View_All_Coupon_Code_modal .All_offers_sec .bannerdiv .btnpos {
+    left: 0px;
+    right: 0px;
+    width: 95%;
+    margin: 0px auto;
+}
+
+.All_offers_sec .bannerdiv .btnpos {
+    position: absolute;
+    bottom: 3%;
+    left: 3%;
+    width: 80%;
+}
+
+.codediv .searchbtn {
+    position: absolute !important;
+    top: 0px;
+    right: 0px;
+    border: 0px;
+    background: #59c9f9;
+    width: 60px;
+    /* height: 44px; */
+    height: 100%;
+    border-radius: 0px 10px 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.All_offers_sec .bannerdiv .thirdoffer {
+    width: 100%;
+    aspect-ratio: 5/2.2;
+    object-fit: fill;
+    background: #000;
+    border-radius: 10px;
+}

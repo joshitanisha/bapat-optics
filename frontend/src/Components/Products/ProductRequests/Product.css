@@ -1,0 +1,32 @@
+.add-varient {
+  background-color: #006e9c;
+  border-color: #006e9c;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.save-btnnnnnn {
+  border: none;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 14px;
+  background: green;
+  color: #fff;
+}
+
+.save-btnnnnnn:hover {
+  border: none;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 14px;
+  background: green;
+  color: #fff;
+}
+
+.offcanvas .btn-danger {
+  /* border-radius: 20px; */
+  padding: 8px 15px;
+  font-size: 14px;
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groscido Invoice</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto"
+    />
+    <base href="<%= data.base %>" />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif !important;
+      }
+    </style>
+  </head>
+
+  <body
+    style="width: 29.7cm; height: 100%; border: 1px solid #000;"
+  >
+    <div style="padding: 30px">
+      <div style="width: 100%">
+     
+         <div style="margin-bottom: 20px; display: flex;">
+          <div>
+            <img
+               src="<%= data?.app_setup?.logo %>"
+              style="width: 200px; height: auto;  border: 2px solid #6ec090;"
+            />
+          </div>
+        </div>
+       
+
+      
+        <table style="width: 100%; background-color: #ebf7ff; padding: 15px 0px 15px 40px;">
+          <tr>
+            <td style="width: 50%; font-size: 14px;">
+             
+                  <p style="color: #000; font-size: 15px;">
+               GSTIN: <span style="font-weight: 600">09FTUPK5773C1Z1</span>
+              </p>
+             <p style="color: #000; font-size: 15px;">
+               PAN: <span style="font-weight: 600">FTUPK5773C</span>
+              </p>
+                <p style="color: #000; font-size: 15px;">
+              Mobile: <span style="font-weight: 600"><%= data?.app_setup?.contact_no %></span>
+              </p>
+
+              
+               
+              <p style="color: #000; font-size: 15px;">
+                Email:: <span style="font-weight: 600"><%= data?.app_setup?.email %></span>
+              </p>
+              <p style="color: #000; font-size: 15px;">
+                Address: <span style="font-weight: 600"><%= data?.app_setup?.address %></span>
+              </p>
+              <p style="color: #000; font-size: 15px;">
+                Pincode:: <span style="font-weight: 600"><%= data?.app_setup?.Pincode?.name %></span>
+              </p>
+            
+            </td>
+
+            <td style="width: 50%; font-size: 14px; padding-left: 10px;">
+               <p style="font-size: 20px; margin-bottom: 0; color: #5e5e5e; font-weight: 500;">Bill to</p>
+                 <p style="font-weight: bold; color: #575353;">
+                <%= data?.order?.User?.name %> <%= data?.order?.User?.last_name %>
+              </p>
+              <p style="font-size: 15px; color: #000">
+                <img
+                  style="width: 10px; height: auto; margin-right: 10px"
+                  src="../../public/assets/images/call.png"
+                />
+                <span><%= data?.order?.User?.contact_no %></span>
+              </p>
+
+               <p style="font-weight: bold; color: #575353;">
+                <%= data?.order?.User_Address?.floor %> ,<%= data?.order?.User_Address?.building %>,
+                <%= data?.order?.User_Address?.apartment %>,<%= data?.order?.User_Address?.street %>,
+
+                 <%= data?.order?.User_Address?.Users_Address_Detail?.Area?.name %> ,<%= data?.order?.User_Address?.Users_Address_Detail?.City?.name %>,
+                <%= data?.order?.User_Address?.Users_Address_Detail?.State?.name %>,<%= data?.order?.User_Address?.Users_Address_Detail?.Country
+                            ?.name %>,<%= data?.order?.User_Address?.Users_Address_Detail?.Pincode
+                            ?.name %>
+              </p>
+               <p style="font-weight: bold; color: #575353;">
+                <%= data?.order?.User?.name %> <%= data?.order?.User?.last_name %>
+              </p>
+              <p style="color: #000; font-size: 15px;">
+                Order No: <span style="font-weight: 600">#<%= data?.order?.invoice_no %></span>
+              </p>
+              <p style="color: #000; font-size: 15px;">
+                Order Date & Time: <span style="font-weight: 600"><%= new Date(data?.order?.createdAt).toLocaleString() %></span>
+              </p>
+              <p style="color: #000; font-size: 15px;">
+                Payment Method: <span style="font-weight: 600"><%= data?.order?.Payment_Method?.name %></span>
+              </p>
+             <p style="color: #000; font-size: 15px;">
+  GST: <span style="font-weight: 600"><%= data?.order?.gst_number || 'NA' %></span>
+</p>
+
+            
+              <p style="color: #000; font-size: 15px;">
+                Total: <span style="font-weight: 600">₹ <%= parseFloat(data?.order?.total_amount).toFixed(2) %></span>
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Product Table -->
+        <div class="product-table">
+          <table style="width: 100%; margin-top: 15px; border: 1px solid #ccc; border-collapse: collapse;">
+            <thead style="background-color: #05505a; color: #fff; font-size: 16px;">
+              <tr>
+                <th style="padding: 13px; border: 1px solid #ccc;">S.No</th>
+                <th style="padding: 13px; border: 1px solid #ccc;">Product Name</th>
+                 <th style="padding: 13px; border: 1px solid #ccc;">Batch No</th>
+                  <th style="padding: 13px; border: 1px solid #ccc;">Expiry Date</th>
+                <th style="padding: 13px; border: 1px solid #ccc;">Item Code</th>
+                 <th style="padding: 13px; border: 1px solid #ccc;">HSN Code</th>
+                <th style="padding: 13px; border: 1px solid #ccc;">Qty</th>
+                <th style="padding: 13px; border: 1px solid #ccc;">Kg/Nos</th>
+                  <th style="padding: 13px; border: 1px solid #ccc;">GST %</th>
+                    <th style="padding: 13px; border: 1px solid #ccc;">CGST</th>
+                      <th style="padding: 13px; border: 1px solid #ccc;">SGST</th>
+                      <th style="padding: 13px; border: 1px solid #ccc;">Cess</th>
+                         <th style="padding: 13px; border: 1px solid #ccc;">Total</th>
+                <!-- <th style="padding: 13px; border: 1px solid #ccc;">Rate</th>
+                <th style="padding: 13px; border: 1px solid #ccc;">Discount</th>
+                <th style="padding: 13px; border: 1px solid #ccc;">Tax</th>
+              -->
+              </tr>
+            </thead>
+
+            <tbody>
+              <% data?.order?.Product_Order_Details?.forEach((item, index) => { %>
+              <tr style="text-align: center">
+                <td style="padding: 10px; border: 1px solid #ccc;"><%= index + 1 %></td>
+                <td style="padding: 10px; border: 1px solid #ccc;">
+                  <%= item?.Product?.name %> 
+                </td>
+                  <td style="padding: 10px; border: 1px solid #ccc;">
+                  <%= item?.batch_no %> 
+                </td>
+                  </td>
+                  <td style="padding: 10px; border: 1px solid #ccc;">
+                  <%= item?.expiry_date %> 
+                </td>
+                <td style="padding: 10px; border: 1px solid #ccc;"><%= item?.Product?.item_code %></td>
+                <td style="padding: 10px; border: 1px solid #ccc;"><%= item?.Product?.lic_no %></td>
+                <td style="padding: 10px; border: 1px solid #ccc;"><%= item?.quantity %> </td>
+
+                 <td style="padding: 10px; border: 1px solid #ccc;"><%= item?.Product_Variant?.name %> <%= item?.Product?.Unit?.name %></td>
+                  <td style="padding: 10px; border: 1px solid #ccc;"><%= item?.tax_percentage %></td>
+                   <td style="padding: 10px; border: 1px solid #ccc;">
+                    <%= (parseFloat(item?.total_tax || 0) / 2).toFixed(2) %>
+                  </td>
+
+                                      <td style="padding: 10px; border: 1px solid #ccc;">
+                    <%= (parseFloat(item?.total_tax || 0) / 2).toFixed(2) %>
+                  </td>
+                  
+                                      <td style="padding: 10px; border: 1px solid #ccc;">
+                    <%= (parseFloat(item?.cess_tax || 0) ).toFixed(2) %>
+                  </td>
+
+                 <td style="padding: 10px; border: 1px solid #ccc;"><%= parseFloat(item?.total_amount).toFixed(2) %></td>
+                <!-- <td style="padding: 10px; border: 1px solid #ccc;">
+                  Sub Total: <%= parseFloat(item?.total_selling_price).toFixed(2) %><br />
+                  Packing: <%= parseFloat(item?.packing_charges).toFixed(2) %><br />
+                  Delivery: <%= parseFloat(item?.delivery_charges).toFixed(2) %>
+                </td>
+                <td style="padding: 10px; border: 1px solid #ccc;">
+                  <%= (
+                    parseFloat(item?.refer_discount || 0) +
+                    parseFloat(item?.coupon_discount || 0) +
+                    parseFloat(item?.offer_discount || 0)
+                  ).toFixed(2) %> 
+                </td>
+                <td style="padding: 10px; border: 1px solid #ccc;"><%= parseFloat(item?.total_tax).toFixed(2) %></td>
+                 -->
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Totals -->
+        <div style="display: flex; justify-content: end; margin-top: 20px;">
+          <div style="width: 50%; background-color: #f1f1f1; border: 1px solid #ccc; padding: 20px 10px;">
+            <% const totals = [
+              { label: 'Sub Total', value: data?.order?.total_selling_price },
+              { label: 'Delivery Charges', value: data?.order?.delivery_charges },
+              { label: 'Convenience Fee', value: data?.order?.platform_fee },
+              { label: 'Coupon Discount', value: data?.order?.total_coupon_discount },           
+              { label: 'Offer Discount', value: data?.order?.total_offer_discount },
+              { label: 'Total CGST', value: (parseFloat(data?.order?.total_tax || 0) / 2).toFixed(2)},
+                { label: 'Total SGST', value:(parseFloat(data?.order?.total_tax || 0) / 2).toFixed(2)},
+                  { label: 'Total Cess', value:(parseFloat(data?.order?.cess_tax || 0)).toFixed(2)},
+            ]; %>
+
+            <% totals.forEach((row) => { %>
+              <div style="display: flex; margin-bottom: 10px;">
+                <div style="width: 70%; font-weight: 500;font-size: 15px;"><%= row.label %></div>
+                <div style="width: 30%;font-size: 15px;">₹ <%= parseFloat(row.value || 0).toFixed(2) %></div>
+              </div>
+            <% }); %>
+
+            <div style="display: flex; margin-bottom: 0px;">
+              <div style="width: 70%; font-size: 17px; font-weight: 600;font-size: 15px;">Grand Total (In Figures)</div>
+              <div style="width: 30%; font-size: 17px; font-weight: 600;font-size: 15px;">
+                ₹ <%= parseFloat(data?.order?.total_amount).toFixed(2) %>
+              </div>
+            </div>
+             <div style="display: flex; margin-bottom: 0px;">
+              <div style="width: 70%; font-size: 17px; font-weight: 600;font-size: 15px;">Grand Total (In Words)</div>
+              <div style="width: 30%; font-size: 17px; font-weight: 600;font-size: 15px;">
+                ₹ <%= data?.amount_in_words %>
+              
+              </div>
+            </div>
+
+
+          </div>
+          
+        </div>
+
+        <div>
+            <p style="font-size:15px;color: #000;margin: 5px 0px;">Declaration: We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.   
+            <p style="font-size:15px;color: #000;margin: 5px 0px;">- All prices are inclusive of applicable taxes.</p>
+            <p style="font-size:15px;color: #000;margin: 5px 0px;">- For issues like partial returns, QR/cash payment confirmations, or delivery location errors, use in-app options under 'Select Item'.</p>
+            <p style="font-size:15px;color: #000;margin: 5px 0px;"> - For any queries, contact: +<%= data?.app_setup?.contact_no %></p></p>
+        </div>
+
+
+      </div>
+    </div>
+  </body>
+</html>

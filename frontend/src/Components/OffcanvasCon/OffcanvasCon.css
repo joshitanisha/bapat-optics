@@ -1,0 +1,32 @@
+ .offcanvas.offcanvas-end {
+     top: 0;
+     right: 0;
+     width: 82%;
+ }
+
+ .Offcanvasmiancon .storeAddedhead {
+     background-color: #ccc;
+     padding: 10px;
+     color: #000;
+     font-size: 20px;
+     margin-bottom: 2%;
+ }
+
+ .Offcanvasmiancon .card-body {
+     padding: 0;
+ }
+
+ .Offcanvasmiancon .offhead h3 {
+     padding: 14px;
+     font-weight: 600;
+     font-size: 28px;
+ }
+
+ .Offcanvasmiancon .mainTableOff {
+     padding: 0px 8px 0px 8px
+ }
+
+ .Offcanvasmiancon .card {
+     box-shadow: 0 0 4px #ccc;
+     background-color: #fff;
+ }

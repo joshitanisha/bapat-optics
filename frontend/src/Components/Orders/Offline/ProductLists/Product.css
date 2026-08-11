@@ -1,0 +1,386 @@
+.product-container {
+   padding: 25px;
+    background: #fff;
+    border: 1px solid #006e9c;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2%;
+}
+
+.product-title {
+  font-weight: 600;
+  margin-bottom: 2rem;
+  font-size: 18px;
+  color:#000
+}
+
+.product-input-wrapper {
+  background: #f9f9f9;
+  border-radius: 8px;
+ padding: 1% !important; 
+   border: 1px solid #006e9c;
+}
+
+.input-icon {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.product-details-card{
+  position: relative;
+}
+
+.remove_icon {
+    position: absolute;
+    top: 5px;
+    right: 9px;
+    font-size: 22px;
+    color: red;
+}
+
+.input-icon .icon {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.user-input {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  width: 100%;
+}
+
+.product-details-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.product-image-container {
+  flex-shrink: 0;
+}
+
+.product-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    aspect-ratio: 1/1;
+}
+
+.product-info {
+    flex-grow: 1;
+    font-size: 14px;
+    color: #000;
+    font-weight: 400;
+}
+
+.product-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 18px;
+}
+
+.product-price {
+  color: #28a745;
+  font-weight: 500;
+font-size: 15px;
+}
+
+
+.add-btn-floating  {
+    position: absolute;
+    bottom: -13px;
+    right: 15px;
+     display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.add-btn-floating .btn.btn-dark{
+border-radius: 25px;
+    padding: 8px 18px;
+    font-weight: 500;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.add-btn-floating .btn.btn-dark:hover {
+  background-color: #222;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* ------------------- Responsive Styles ------------------- */
+@media (max-width: 1024px) {
+ 
+  
+}
+
+@media (max-width: 768px) {
+ 
+  .product-details-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+  .product-info {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+
+
+  .product-price {
+    font-size: 0.95rem;
+  }
+
+  .add-btn-floating {
+    position: relative;
+    margin-top: 1rem;
+    right: 0;
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .product-image {
+    max-width: 100%;
+  }
+
+
+  .product-price {
+    font-size: 0.9rem;
+  }
+}
+.product-table {
+    margin-top: 25px;
+    background: #fff;
+}
+
+.product-table th {
+    background: #0b84b3;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.product-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.product-table input {
+    text-align: center;
+}
+.product-search-grid {
+    background: #fff;
+    border: 1px solid #dfe6ee;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 24px;
+}
+
+.grid-header {
+    border-bottom: 1px solid #dfe6ee;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+}
+
+.grid-header h6 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+.grid-body .input-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.grid-body .icon {
+    color: #0d6efd;
+    width: 18px;
+}
+.invoice-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border:1px solid #d9d9d9;
+    border-radius:8px;
+    padding:14px;
+    margin-top:18px;
+    background:#fff;
+}
+
+.invoice-col{
+    font-size:14px;
+}
+
+.serial{
+    width:40px;
+    font-weight:600;
+}
+
+.hsn{
+    width:120px;
+}
+
+.product-name{
+    flex:1;
+    font-weight:500;
+}
+
+.mrp{
+    width:90px;
+    text-align:center;
+}
+
+.discount{
+    width:70px;
+    text-align:center;
+}
+
+.discount-amount{
+    width:120px;
+    text-align:center;
+}
+
+.final-price{
+    width:120px;
+    font-weight:600;
+    text-align:center;
+}
+
+.prescription{
+    width:60px;
+    text-align:center;
+}
+
+.delete{
+    width:60px;
+    text-align:center;
+}
+.invoice-header{
+    display:grid;
+    grid-template-columns:
+    60px
+    140px
+    3fr
+    100px
+    100px
+    120px
+    120px
+    90px
+    90px;
+
+    background:#0b84b3;
+    color:#fff;
+    padding:12px;
+    border-radius:8px;
+    font-weight:600;
+    text-align:center;
+    margin-bottom:8px;
+}
+
+.invoice-row{
+    display:grid;
+    grid-template-columns:
+    60px
+    140px
+    3fr
+    100px
+    100px
+    120px
+    120px
+    90px
+    90px;
+
+    align-items:center;
+
+    padding:14px;
+
+    border:1px solid #d9d9d9;
+
+    border-radius:8px;
+
+    margin-bottom:10px;
+
+    background:#fff;
+
+    text-align:center;
+}
+.product-title {
+    text-align: center;
+    color: #1593c7;   /* Same blue as Bapat Optics */
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+.product-title {
+    text-align: center;
+    color: #1593c7;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.product-title::after {
+    content: "";
+    width: 80px;
+    height: 3px;
+    background: #1593c7;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+.product-search-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    background: #fff;
+    min-height: 38px;
+}
+
+.product-search-trigger:hover {
+    border-color: #0d6efd;
+}
+
+.search-icon {
+    color: #6c757d;
+    font-size: 18px;
+}
+
+.product-search-trigger span {
+    font-size: 14px;
+}
+.product-result{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    cursor:pointer;
+}
+
+.product-result:hover{
+    background:#f5f5f5;
+}

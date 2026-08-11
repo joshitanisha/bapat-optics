@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bapat Invoice</title>
+  <base href="<%= data.base %>" />
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            color: #000;
+        }
+
+        .container {
+            width: 800px;
+            height: 100% ;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 15px;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+
+        .logo_img {
+            width: 150px;
+            height: 100%;
+        }
+
+       .main_heading {
+            text-align: center;
+            margin: 10px 0;
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        .company-details {
+            text-align: right;
+            margin-top: 5px;
+        }
+
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #000;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .no-border {
+            border: none;
+        }
+
+        .summary {
+            margin-top: 10px;
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .prescription {
+            margin-top: 20px;
+        }
+
+       
+
+        .footer-note {
+            font-size: 12px;
+            margin-top: 15px;
+        }
+
+        .checkbox {
+            margin-top: 8px;
+        }
+
+        .margin-top-zero {
+            margin-top: 0px;
+        }
+
+        .padding_zero {
+            padding: 0px;
+        }
+
+        .total_submmary {
+            text-align: right;
+        }
+
+        .total_submmary p {
+            font-size: 14px;
+            color: #000;
+            font-weight: 600;
+            margin: 0px;
+        }
+
+        .total_submmary h4 {
+            font-size:14px;
+            color: #000;
+            font-weight: 600;
+            margin: 0px;
+        }
+
+        .bg_td {
+            background: #ddd;
+            width: 30%;
+        }
+
+        .title_txt_two {
+            text-align: left;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .table_bold_text {
+            text-align: center;
+            font-weight: 800;
+            font-size: 12px;
+        }
+
+        .prescription  p{
+            margin:0px;
+        }
+
+        .margin_top {
+            margin-top: 10px;
+        }
+
+        .bapat_heading {
+            margin: 0px;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .website_link_holder{
+         font-size: 15px;
+            font-weight: 800;
+            color: #00a0e3;
+        }
+    </style>
+</head>
+
+<body>
+
+   
+  <div class="container">
+ <% data?.order?.Product_Order_Details?.forEach((item, index) => { %>
+    <div class="header">
+      <table class="no-border padding_zero">
+        <tr class="no-border">
+          <!-- <td width="50%" class="no-border"><img  src="<%= data?.app_setup?.logo %>" alt="logo" class="logo_img"></td> -->
+          <td width="50%" class="no-border"><img  src="<%= data?.logo_base64 %>" alt="logo" class="logo_img"></td>
+          <td width="50%" class="no-border">
+            <div class="company-details">
+              <h3 class="bapat_heading">Bapat Optics Kothrud</h3> <br>
+              <%= data?.app_setup?.address %><br>
+              Mobile: <%= data?.app_setup?.contact_no %><br>
+              Email: <%= data?.app_setup?.email %> | GST: 27AKPSZB6861RZA<br>
+              Website: <%= data?.app_setup?.website_name %>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- INVOICE TITLE -->
+    <!-- <h2 class="main_heading">Invoice</h2> -->
+    <h2 class="main_heading"><%= data.isAdvance ? 'Advance Receipt' : 'Invoice' %></h2>
+
+    <!-- CUSTOMER DETAILS -->
+    <table class="no-border padding_zero">
+      <tr>
+          <% if (data?.order?.gst_number) { %>
+        <td class="no-border padding_zero" colspan="2"><b class="table_bold_text">GST Number :</b>
+          <%= data?.order?.gst_number %> </td><% } %>
+        <td class="no-border padding_zero" colspan="2"><b class="table_bold_text">Invoice Number :</b>
+          <%= data?.order?.invoice_no %>
+        </td>
+      </tr>
+      <tr>
+        <td class="no-border padding_zero" colspan="2"><b class="table_bold_text">Customer Name :</b>
+          <%= data?.order?.User?.name %> </td>
+        <td class="no-border padding_zero" colspan="2"><b class="table_bold_text">Invoice Date :</b>
+          <!-- <%= new Date(data?.order?.createdAt).toLocaleString() %> -->
+          <%= data?.order?.createdAt ? new Date(data.order.createdAt).toLocaleString("en-IN", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true }) : "" %>
+        </td>
+      </tr>
+      <tr>
+        <td class="no-border padding_zero" colspan="2"><b class="table_bold_text">Mobile Number :</b>
+          <%= data?.order?.User?.contact_no %>
+        </td>
+       
+         <td class="no-border padding_zero" colspan="2">
+  <b class="table_bold_text">Date of Order :</b>
+  <%= new Date(data?.order?.createdAt).toLocaleDateString("en-IN") %>
+</td>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="no-border padding_zero" colspan="2"><b class="table_bold_text"> Email ID :</b>
+          <%= data?.order?.User?.email %></td>
+        
+          <td class="no-border padding_zero" colspan="2">
+  <b class="table_bold_text">Time of Order :</b>
+  <%= new Date(data?.order?.createdAt).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) %>
+</td>
+
+        </td>
+      </tr>
+
+      <tr>
+        <% if (data?.order?.User_Address) { %>
+  <td class="no-border padding_zero" colspan="2">
+    <b class="table_bold_text">Address: </b>
+
+    <%= data.order.User_Address.floor || '' %>
+    <%= data.order.User_Address.building ? ', ' + data.order.User_Address.building : '' %>
+    <%= data.order.User_Address.apartment ? ', ' + data.order.User_Address.apartment : '' %>
+    <%= data.order.User_Address.street ? ', ' + data.order.User_Address.street : '' %>
+
+    <%= data.order.User_Address.Users_Address_Detail?.Area?.name
+        ? ', ' + data.order.User_Address.Users_Address_Detail.Area.name
+        : '' %>
+
+    <%= data.order.User_Address.Users_Address_Detail?.City?.name
+        ? ', ' + data.order.User_Address.Users_Address_Detail.City.name
+        : '' %>
+
+    <%= data.order.User_Address.Users_Address_Detail?.State?.name
+        ? ', ' + data.order.User_Address.Users_Address_Detail.State.name
+        : '' %>
+
+    <%= data.order.User_Address.Users_Address_Detail?.Country?.name
+        ? ', ' + data.order.User_Address.Users_Address_Detail.Country.name
+        : '' %>
+
+    <%= data.order.User_Address.Users_Address_Detail?.Pincode?.name
+        ? ' - ' + data.order.User_Address.Users_Address_Detail.Pincode.name
+        : '' %>
+  </td>
+<% } %>
+
+
+        </td>
+      </tr>
+    </table>
+
+    <!-- PRODUCT DETAILS -->
+    <table>
+      <tr>
+        <!-- <th><b>Serial No</b></th>
+        <th><b>Product Details</b></th>
+         <th><b>HSN Code</b></th>
+         <th><b>GST %</b></th>
+        <th><b>Price</b></th> -->
+
+        <th><b>Serial No</b></th>        
+        <th><b>HSN Code</b></th>
+        <th><b>Product Details</b></th>
+        <th><b>MRP</b></th>
+        <th><b>Discount %</b></th>
+        <th><b>Discount Amount</b></th>
+        <th><b>Final Price</b></th>
+      </tr>
+   
+      <tr>
+        <!-- <td>1</td>
+        <td><%= item?.Product?.name %></td>
+        <td><%= item?.Product?.hsn_code %></td>
+        <td><%= parseFloat(item?.tax_percentage || 0) %></td>
+        <td class="text-right"> <%= item?.total_mrp %> 
+        <br/>
+        <span style="font-size: 9px;font-weight: 100; color: #000; text-align: right;">-<%= item?.total_discount %> </span>
+        <br/>
+        <span style="font-size: 9px;font-weight: 100; color: #000; text-align: right;">(<%= item?.Product?.discount %>%) </span>
+        </td> -->
+
+        <td>1</td>
+        <td><%= item?.Product?.hsn_code %></td>
+        <td><%= item?.Product?.name %></td>
+        <td class="text-right"> <%= item?.total_mrp %> </td>
+        <td class="text-right">(<%= item?.Product?.discount %>%) </td>
+        <td class="text-right">-<%= item?.total_discount %> </td>
+        <td class="text-right"> <%= (parseFloat(item?.total_mrp || 0) - parseFloat(item?.total_discount || 0)).toFixed(2) %> </td>       
+      </tr>
+   
+ <% if (item && item.Prescription && item.Prescription.lense_tax_percentage) { %>
+          <tr>
+        <td>2</td>
+        <td>
+      <%= item?.Prescription?.Lense?.name || '' %>  <%= item?.Prescription?.Addon?.name || '' %>
+ 
+      </td>
+       <td><%= item?.Prescription?.Lense?.hsn_code %></td>
+
+        <td><%= item?.Prescription?.lense_tax_percentage %></td>
+        <td class="text-right"> <%= item?.Prescription?.mrp %>
+         <br/>
+        <span style="font-size: 9px;font-weight: 100; color: #000; text-align: right;">-<%= item?.Prescription?.discount %> </span>
+          <br/>
+        <span style="font-size: 9px;font-weight: 100; color: #000; text-align: right;">(<%= item?.Prescription?.lense_discount_percentage %>%) </span>
+      </td>
+       
+      </tr>
+    <% } %>
+   
+    </table>
+
+    <table class="no-border">
+      <tr>
+        <td class=" bg_td " rowspan="3">
+          <h4 style=" font-size: 11px;"><strong>Total Paid :</strong> <strong><%= parseFloat(item?.total_amount).toFixed(2) %></strong></h4>
+           <h4 style=" font-size: 11px;">You Saved <%= (
+                      parseFloat(item?.reward_discount || 0) +
+                      parseFloat(item?.coupon_discount || 0) +
+                      parseFloat(item?.offer_discount || 0)+
+                      parseFloat(item?.total_discount || 0) +
+                      parseFloat(item?.Prescription?.discount || 0) +
+                      parseFloat(item?.Prescription?.coupon_discount || 0) 
+                    ).toFixed(2) %> Amount</h4>
+            <h4 style=" font-size: 11px;">Reward Point <%= parseFloat(data?.wallet_history?.amount||0).toFixed(2) %> Amount Added To Your Account Which You Can
+                        Redeem On Your Next Purchase.</h4>
+        </td>
+       <td class="bg_td" colspan="2">
+  <div style=" font-size: 11px; font-weight: bold;">
+    <div>Reward Discount: ₹<%= parseFloat(item?.reward_discount || 0).toFixed(2) %></div>
+    <div>Product Coupon Discount: ₹<%= parseFloat(item?.coupon_discount || 0).toFixed(2) %></div>
+    <div>Product Discount: ₹<%= parseFloat(item?.total_discount || 0).toFixed(2) %></div>
+     <div>Lens Coupon Discount: ₹<%= parseFloat(item?.Prescription?.coupon_discount || 0).toFixed(2) %></div>
+    <div>Lens Discount: ₹<%= parseFloat(item?.Prescription?.discount || 0).toFixed(2) %></div>
+  </div>
+</td>
+
+        <td class="no-border padding_zero">
+          <table class="margin-top-zero no-border padding_zero">
+            <tr>
+              <td class="no-border padding_zero">
+                <div class="total_submmary text_holder">
+                  <p>Total : <%= (parseFloat(item.total_selling_price || 0) + parseFloat(item?.Prescription?.selling_price || 0)).toFixed(2) %></p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="no-border padding_zero">
+                <div class="total_submmary text_holder">
+                  <p> GST Amount : <%= (parseFloat(item?.total_tax || 0)+parseFloat(item?.Prescription?.tax_amount || 0)).toFixed(2) %></p>
+                </div>
+              </td>
+              
+            </tr>
+           
+              <td class="no-border padding_zero">
+                <div class="total_submmary text_holder">
+                  <p>Gross Total :
+                    <%= (parseFloat(item?.total_selling_price || 0) + parseFloat(item?.total_tax || 0) +parseFloat(item?.Prescription?.selling_price || 0)+parseFloat(item?.Prescription?.tax_amount || 0)).toFixed(2) %>
+                  </p>
+                </div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td class="no-border padding_zero">
+                <div class="total_submmary text_holder">
+                  <p>Total Discount :
+                    <%= Number(item?.total_discount || 0) + Number(item?.Prescription?.discount || 0) %>
+                    <!-- <%= (
+                      parseFloat(item?.reward_discount || 0) +
+                      parseFloat(item?.coupon_discount || 0) +
+                      parseFloat(item?.offer_discount || 0)+
+                      parseFloat(item?.total_discount || 0) +
+                      parseFloat(item?.Prescription?.discount || 0) +
+                      parseFloat(item?.Prescription?.coupon_discount || 0) 
+                    ).toFixed(2) %> -->
+                  </p>
+                </div>
+              </td>
+            </tr>
+
+              <tr>          
+                <td class="no-border padding_zero">
+                <div class="total_submmary text_holder">
+                  <p> Shipping Charges : <%= parseFloat(item?.delivery_charges || 0).toFixed(2) %></p>
+                </div>
+              </td>
+            </tr>
+              <tr>
+            
+                <td class="no-border padding_zero">
+                <div class="total_submmary text_holder">
+                  <p>Add on Charges : <%= parseFloat(item?.total_addon_price || 0).toFixed(2) %></p>
+                </div>
+              </td>
+           
+            <tr>
+                <tr>
+            
+                <td class="no-border padding_zero">
+                <div class="total_submmary text_holder">
+                   <p>Reward Discount : - <%= parseFloat(item?.reward_discount || 0).toFixed(2) %></p>
+                </div>
+              </td>
+           
+            <tr>
+                <tr>
+            
+                <td class="no-border padding_zero">
+                <div class="total_submmary text_holder">
+                   <p>Coupon Discount : - <%= Number(item?.coupon_discount || 0) + Number(item?.Prescription?.coupon_discount || 0) %></p>
+                </div>
+              </td>
+              
+            <% 
+              let totalAdvance = 0;
+              // 1. Calculate the total advance payments from the array                
+              if (data?.order?.Advance_Payments && Array.isArray(data.order.Advance_Payments)) {
+                totalAdvance = data.order.Advance_Payments.reduce((sum, payment) => {
+                  // NOTE: Replace 'amount' with your actual database column name if it is different
+                  return sum + parseFloat(payment.amount || 0); 
+                }, 0);
+              }
+            %>
+            
+            <!-- NEW ROW: Advance Payment -->            
+            <% if (data.isAdvance) { %>
+              <tr>
+                <td class="no-border padding_zero">
+                  <div class="total_submmary text_holder">
+                    <p>Advance Payment : - <%= totalAdvance.toFixed(2) %></p>
+                  </div>
+                </td>
+              </tr>
+            <% } %>
+           
+            <tr>
+            <tr>
+              <td class="no-border padding_zero">
+                <div class="total_submmary text_holder margin_top">
+                  <!-- <h4>Net Total Amount</h4> -->
+                  <h4><%= data.isAdvance ? 'Balance Amount' : 'Net Total Amount' %></h4>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="no-border padding_zero">
+                <div class="total_submmary text_holder">
+                  <!-- <h4>Rs <%= parseFloat(item?.total_amount || 0).toFixed(2) %></h4> -->
+                   <% if (data.isAdvance) { %>
+                    <!-- If Advance Receipt: Show Remaining Balance (Total - Advance Paid) -->
+                    <h4>Rs <%= (parseFloat(item?.total_amount || 0) - totalAdvance).toFixed(2) %></h4>
+                  <% } else { %>
+                    <!-- If Invoice: Show Net Total Amount -->
+                    <h4>Rs <%= parseFloat(item?.total_amount || 0).toFixed(2) %></h4>
+                  <% } %>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <h3 class="title_txt_two table_bold_text">GST Details</h3>
+    <table style="width: 80%;">
+      <tr>   
+        <th>GST %</th>
+        <th><b>HSN Code</b></th>
+        <th>Sale Value</th>
+        <th>CGST</th>
+        <th>SGST</th>
+        <th>Total GST</th>
+      </tr>
+    
+      <tr>       
+        <td><%= parseFloat(item?.tax_percentage || 0) %>%</td>
+         <td><%= item?.Product?.hsn_code %></td>
+        <td><%= parseFloat(item?.total_selling_price).toFixed(2) %></td>
+        <td><%= (parseFloat(item?.total_tax || 0) / 2).toFixed(2) %></td>
+        <td><%= (parseFloat(item?.total_tax || 0) / 2).toFixed(2) %></td>
+        <td><%= parseFloat(item?.total_tax || 0).toFixed(2) %></td>
+      </tr>
+
+<% if (item && item.Prescription && item.Prescription.lense_tax_percentage) { %>
+        <tr>       
+        <td><%= item?.Prescription?.lense_tax_percentage %>%</td>
+         <td><%= item?.Prescription?.Lense?.hsn_code %></td>
+        <td><%= parseFloat(item?.Prescription?.selling_price).toFixed(2) %></td>
+        <td><%= (parseFloat(item?.Prescription?.tax_amount || 0) / 2).toFixed(2) %></td>
+        <td><%= (parseFloat(item?.Prescription?.tax_amount || 0) / 2).toFixed(2) %></td>
+        <td><%= parseFloat(item?.Prescription?.tax_amount || 0).toFixed(2) %></td>
+      </tr>   <% } %>
+    
+
+    <tr>
+  <td colspan="2"><strong>Total</strong></td>
+
+  <td>
+    <strong>
+      <%= (
+        parseFloat(item?.total_selling_price || 0) +
+        parseFloat(item?.Prescription?.selling_price || 0)
+      ).toFixed(2) %>
+    </strong>
+  </td>
+
+  <td>
+    <strong>
+      <%= (
+        (
+          parseFloat(item?.total_tax || 0) +
+          parseFloat(item?.Prescription?.tax_amount || 0)
+        ) / 2
+      ).toFixed(2) %>
+    </strong>
+  </td>
+
+  <td>
+    <strong>
+      <%= (
+        (
+          parseFloat(item?.total_tax || 0) +
+          parseFloat(item?.Prescription?.tax_amount || 0)
+        ) / 2
+      ).toFixed(2) %>
+    </strong>
+  </td>
+
+  <td>
+    <strong>
+      <%= (
+        parseFloat(item?.total_tax || 0) +
+        parseFloat(item?.Prescription?.tax_amount || 0)
+      ).toFixed(2) %>
+    </strong>
+  </td>
+</tr>
+    </table>
+
+   
+    <h2 class="main_heading">Prescription</h2>
+
+    <div class="prescription">
+      <p><strong class="table_bold_text">Date & Time :</strong> 
+        <%= new Date(data?.order?.createdAt).toLocaleDateString("en-IN") %>  
+        <!-- <%= new Date(item?.Prescription?.createdAt).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) %> </p> -->
+        <%= item?.Prescription?.createdAt ? new Date(item.Prescription.createdAt).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "" %>
+      <p><strong class="table_bold_text"> Patient Name : </strong> <%= data?.order?.User?.name %></p>
+
+    <% if (data?.order?.doctor_name) { %>
+  <p>
+    <strong class="table_bold_text">Doctor / Optometrist Name :</strong>
+    <%= data.order.doctor_name %>
+  </p>
+    <% } %>
+
+      </div>
+
+    <%
+  const details = item?.Prescription?.Prescription_Details || [];
+
+  // Helper: Get value by eye_type, vision_type, and unit
+  const getValue = (eye, vision, unit) => {
+    const found = details.find(
+      d =>
+        d.eye_type_id === eye &&
+        d.vission_type_id === vision &&
+        d.eye_unit_id === unit
+    );
+    return found ? found.name : "-";
+  };
+%>
+
+<table class="no-border">
+  <tr class="no-border">
+    <th class="no-border text-center table_bold_text" colspan="4">Right Eye (OD)</th>
+    <th class="no-border text-center table_bold_text" colspan="4">Left Eye (OS)</th>
+  </tr>
+
+  <tr>
+    <th></th>
+    <th>R-SPH</th>
+    <th>R-CYL</th>
+    <th>R-AXIS</th>
+    <th>R-VA</th>
+    <th>L-SPH</th>
+    <th>L-CYL</th>
+    <th>L-AXIS</th>
+    <th>L-VA</th>
+  </tr>
+
+  <!-- DV -->
+  <tr>
+    <th>DV</th>
+    <!-- Right Eye -->
+    <td><%= getValue(1, 1, 1) %></td>
+    <td><%= getValue(1, 1, 2) %></td>
+    <td><%= getValue(1, 1, 3) %></td>
+    <td><%= getValue(1, 1, 4) %></td>
+    <!-- Left Eye -->
+    <td><%= getValue(2, 1, 5) %></td>
+    <td><%= getValue(2, 1, 6) %></td>
+    <td><%= getValue(2, 1, 7) %></td>
+    <td><%= getValue(2, 1, 8) %></td>
+  </tr>
+
+  <!-- NV -->
+  <tr>
+    <th>NV</th>
+    <!-- Right Eye -->
+    <td ><%= getValue(1, 2, 1) %></td>
+    <td><%= getValue(1, 2, 2) %></td>
+    <td><%= getValue(1, 2, 3) %></td>
+    <td><%= getValue(1, 2, 4) %></td>
+
+    
+    <!-- Left Eye -->
+    <td ><%= getValue(2, 2, 5) %></td>
+     <td><%= getValue(2, 2, 6) %></td>
+    <td><%= getValue(2, 2, 7) %></td>
+    <td><%= getValue(2, 2, 8) %></td>
+  </tr>
+
+  <!-- ADD -->
+  <tr>
+    <th>ADD</th>
+     <td><%= getValue(1, 3, 1) %></td>
+     <td>-</td>
+    <td>-</td>
+    <td>-</td>
+   
+ 
+
+     <!-- Left Eye -->
+    <td><%= getValue(2, 3, 5) %></td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+   
+  </tr>
+
+  <!-- ADD -->
+  <tr>
+    <th>PD</th>
+     <td><%= getValue(1, 4, 1) %></td>
+       <td>-</td>
+    <td>-</td>
+    <td>-</td>
+ 
+  
+    <td><%= getValue(2, 4, 5) %></td>
+     <td>-</td>
+    <td>-</td>
+    <td>-</td>
+   
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>
+      <table style="border: none;">
+          <tr style="border: none;">
+            <td style="border: none;">
+                A Size
+            </td>
+           <td style="border: none;">
+          <input
+            type="text"
+            class="form-control"
+            style="width: 100px;"
+            value="<%= item?.Prescription?.a_size || '' %>"
+          />
+          </td>
+
+          </tr>
+      </table>  
+    </td>
+
+     <td>
+      <table style="border: none;">
+          <tr style="border: none;">
+            <td style="border: none;">
+                B Size
+            </td>
+            <td style="border: none;">
+                <input type="form-control" style="width: 100px; "  value="<%= item?.Prescription?.b_size || '' %>">
+            </td>
+          </tr>
+      </table>  
+    </td>
+
+     <td>
+      <table style="border: none;">
+          <tr style="border: none;">
+            <td style="border: none;">
+                FH
+            </td>
+            <td style="border: none;"> 
+                <input type="form-control" style="width: 100px; "  value="<%= item?.Prescription?.fh || '' %>">
+            </td>
+          </tr>
+      </table>  
+    </td>
+
+     <td>
+      <table style="border: none;">
+          <tr style="border: none;">
+            <td style="border: none;">
+                DBL
+            </td>
+            <td style="border: none;">
+                <input type="form-control" style="width: 100px; "  value="<%= item?.Prescription?.dbl || '' %>">
+            </td>
+          </tr>
+      </table>  
+    </td>
+  </tr>
+</table>
+
+
+<div class="checkbox">
+  <input type="checkbox" checked> <%= item?.Prescription?.LensType?.name || '' %>
+  <input type="checkbox" checked><%= item?.Prescription?.Addon?.name || '' %>
+</div>
+
+<p class="text-center"><b>TIMING: 10.30 AM TO 8.30 PM. Tuesday to Sunday</b></p>
+
+<a href="www.bapatoptics.com">
+  <p class="text-center website_link_holder"><b>www.bapatoptics.com</b></p>
+</a>
+<% }); %>
+  </div>
+
+
+
+</body>
+
+</html>

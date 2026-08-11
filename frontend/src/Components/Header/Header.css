@@ -1,0 +1,393 @@
+.header .header-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header .header-icons .icon {
+  margin: 0px 5px;
+  margin-top: 7px;
+}
+
+.header .header-icons .icon.dropdown .dropdown-menu[data-bs-popper] {
+  top: 100%;
+  left: -92px;
+  margin-top: var(--bs-dropdown-spacer);
+}
+.header .navbar-collapse.collapse:not(.show) {
+  display: block;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #363795;
+}
+
+.header .desktop-bar-btnnn {
+  display: block;
+}
+
+.header .mobile-view-bar {
+  display: none;
+}
+
+.header .mobile-view-bar .bars {
+    display: flex;
+    align-items: center;
+}
+
+
+.floguser {
+  font-size: 20px;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.header .search-area .form-control {
+  background: #e3e3e3;
+  border-width: 0px;
+  padding-left: 20px;
+  border-radius: 60px 0 0 60px;
+  box-shadow: none;
+}
+
+.header .header_icons {
+  background-color: #fff;
+  padding: 9px;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.header .logout-btnnn {
+  border: 1px solid #006e9c;
+  background: #006e9c;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.header .logout-btnnn:hover {
+  border: 1px solid #006e9c;
+  background: #006e9c;
+}
+
+.header .search-area .input-group-text {
+  background: #e3e3e3;
+  border-width: 0px;
+  border-radius: 60px;
+  padding: 3px 9px;
+}
+
+.header nav h1 {
+  margin: 0% 20px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 0px;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.header nav {
+  background: #006e9c;
+  padding: 16px 0px;
+}
+
+.header .dropdown-toggle::after {
+  display: none !important;
+}
+
+.header .dropdown-item {
+  padding: 5px 34px;
+}
+
+.header .dropdown-item:hover {
+  background: #5db280;
+}
+
+.header .navbar-toggler {
+  margin-right: 3%;
+}
+
+.header .navbar-expand-lg .navbar-nav .dropdown-menu {
+  position: absolute;
+  left: -84px;
+  top: 31px;
+  background: #5db280;
+}
+
+.header .blue-bg {
+  background: #006e9c;
+  padding: 0px 0px 10px 0px;
+}
+
+.header .blue-bg .avtar-img {
+  width: 100%;
+  padding: 10px 40px 0px 40px;
+  border-radius: 50%;
+}
+
+.header .logout_content {
+  margin-bottom: 0;
+  margin-top: 5px;
+  font-size: 14px;
+  margin-right: 20px;
+  color: #fff;
+}
+
+.header .logout_content_sec {
+  font-size: 14px;
+  color: #fff;
+}
+
+.header .logout_content_secccc {
+  font-size: 12px;
+  color: #fff;
+  font-weight: 400px;
+}
+
+.header .power-icon {
+  color: #fff;
+}
+
+.header .super_admintxt {
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+.header .header-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .header-text p {
+  font-size: 12px;
+  margin-right: 10px;
+  margin-bottom: 0px;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+
+.header .header-text svg {
+  font-size: 17px;
+  /* margin-right: 3px; */
+  margin-left: 15px;
+  color: #fff;
+}
+
+.header .navbar-toggler-icon {
+  font-size: 15px;
+}
+
+.mobdshhide {
+  display: block;
+}
+
+.moblogefwfgj {
+  display: none;
+}
+
+.mobview_loglogo .logodiv .logo {
+  display: none;
+}
+
+.mobview_loglogo .power-icon {
+  display: none;
+}
+
+@media screen and (min-width: 0px) and (max-width: 991px) {
+  .mobdshhide {
+    display: none;
+  }
+
+.moblogefwfgj {
+    height: 40px;
+    width: 100px;
+    display: block;
+    object-fit: contain;
+}
+
+  .header .header-text svg {
+    font-size: 20px;
+    margin-left: 0px;
+    color: #fff;
+}
+  .navbar-nav .dropdown-menu {
+    position: absolute;
+  }
+
+  .sidebarHeadopen .accordion-header .sidebar_txt {
+    display: none !important;
+  }
+
+  .sidebar .accordion-button::after {
+    display: none !important;
+  }
+
+  .mobview_loglogo .logodiv .logo {
+    height: 50px;
+    width: auto;
+    display: block;
+  }
+
+  .header .navbar-toggler {
+    margin-right: 3%;
+    display: none;
+  }
+  /* 
+  .header .power-icon {
+    display: block;
+    position: relative;
+    right: 20px;
+    top: 5px;
+  } */
+
+  .mobview_loglogo .dropdown-menu[data-bs-popper] {
+    top: 100%;
+    left: -156px;
+    margin-top: var(--bs-dropdown-spacer);
+    top: 35px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 576px) {
+  .header nav h1 {
+    font-size: 15px;
+  }
+  .header .header-icons {
+    justify-content: end;
+  }
+
+  .header .desktop-bar-btnnn {
+    display: none;
+  }
+
+  .header .mobile-view-bar {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 767px) {
+  .header .header-icons {
+    justify-content: end;
+  }
+
+  .header .desktop-bar-btnnn {
+    display: none;
+  }
+
+  .header .mobile-view-bar {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .header .header-icons {
+    justify-content: end;
+  }
+}
+
+/* Ensure there is spacing between the icons */
+.header-icons .search-area,
+.header-icons .icon {
+  margin-right: 20px;
+  margin-right: 50px;
+  /* Space between icons */
+  position: relative;
+  /* Needed for positioning the name on hover */
+}
+
+/* The icon container */
+.search-area.icon {
+  display: flex;
+  align-items: center;
+}
+
+/* For showing the name on hover */
+.header-icons .search-area.icon:hover::after,
+.header-icons .icon:hover::after {
+  content: attr(data-name);
+  /* Get the name from data attribute */
+  position: absolute;
+  top: 100%;
+  /* Place the name below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  /* Background color for the text */
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  white-space: nowrap;
+  /* Prevent the name from breaking into a new line */
+  opacity: 1;
+  /* Show the name */
+  visibility: visible;
+  /* Ensure the name is visible */
+  z-index: 1;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+/* Initially hide the name */
+.header-icons .search-area.icon::after,
+.header-icons .icon::after {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Optionally, you can add a cursor pointer to show the element is interactive */
+.search-area.icon,
+.icon {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 0px) and (max-width: 575px) {
+  .header .header-icons .btn.btn-dark {
+    font-size: 10px;
+    padding: 0px 10px;
+  }
+
+  .header .header-icons {
+    gap: 1px;
+  }
+
+ .header .logout_content {
+    margin-top: 0px;
+    font-size: 10px;
+}
+
+.header .header-icons .icon {
+  margin-top: 0px;
+    font-size: 11px;
+}
+}
+
+
+
+@media screen and (min-width: 576px) and (max-width: 991px) {
+  .header .header-icons .btn.btn-dark {
+    font-size: 13px;
+    padding: 2px 10px;
+  }
+
+  .header .header-icons {
+    gap: 5px;
+  }
+
+ .header .logout_content {
+    margin-top: 0px;
+    font-size: 13px;
+}
+
+.header .header-icons .icon {
+  margin-top: 0px;
+    font-size: 11px;
+}
+}

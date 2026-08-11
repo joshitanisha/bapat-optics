@@ -1,0 +1,60 @@
+.AddOffCanvance_modal .package-details-section h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+
+.AddOffCanvance_modal .count_card_holder {
+  background: #006e9c;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.AddOffCanvance_modal .count_card_holder h6 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.AddOffCanvance_modal .count_card_holder p {
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 0px;
+}
+
+.box_hodler {
+  background: #fff;
+  box-shadow: 0px 0px 5px 0px #ccc;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 11px;
+}
+
+
+.box_hodler h6 {
+  font-size: 15px;
+  color: #000;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+}
+
+
+.box_hodler p {
+  font-size: 14px;
+  color: #000;
+  font-weight: 500;
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .AddOffCanvance_modal .count_card_holder h6 {
+    font-size: 12px;
+  }
+
+  .AddOffCanvance_modal .count_card_holder p {
+    font-size: 13px;
+  }
+}

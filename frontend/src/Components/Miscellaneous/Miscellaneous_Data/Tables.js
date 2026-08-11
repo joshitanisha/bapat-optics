@@ -1,0 +1,738 @@
+import React, { useContext } from "react";
+import { useState, useEffect } from "react";
+import "../../Tabels/Tabels.css";
+import plus from "../../../Components/assets/icons/a1.png";
+import colunms from "../../../Components/assets/icons/LINES.png";
+import pen from "../../../Components/assets/icons/pen.png";
+import basket from "../../../Components/assets/icons/basket.png";
+import search1 from "../../../Components/assets/icons/search.png";
+import top from "../../../Components/assets/icons/top.png";
+import Table from "react-bootstrap/Table";
+import { Link } from "react-router-dom";
+import Header from "../../Header/Header";
+import { Context } from "../../../utils/context";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import Button from "react-bootstrap/Button";
+import Offcanvas from "react-bootstrap/Offcanvas";
+// *******************toster****************************
+import toast, { Toaster } from "react-hot-toast";
+import Select from "react-select";
+import AddOffCanvance from "./Add";
+import EditOffCanvance from "./Edit";
+import ModalDelete from "../../common/ModelDelete";
+import { AddButton, EditButton, DeletButton } from "../../common/Button";
+import { Container, Row, Col, Button, Form, InputGroup } from "react-bootstrap";
+import ModelBulkUpload from "../../common/ModelBulkUpload";
+import OffcanvasCon from "../../OffcanvasCon/OffcanvasCon";
+import { formatDate, formatDateTimeNew, formatDateToISTTime, IDS } from "../../../utils/common";
+import Pagination_Holder from "../../common/Pagination_Holder/Pagination_Holder";
+import Pagination from "react-bootstrap/Pagination";
+import parse from "html-react-parser";
+library.add(fas);
+
+const Tables = () => {
+  const {
+    getData,
+    editStatusData,
+    deleteData,
+    ErrorNotify,
+    Per_Page_Dropdown,
+    postData,
+    getDownloadDataExcel,
+    isAllow,
+    Select2Data,
+  } = useContext(Context);
+
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage, setperPage] = useState(5);
+  const [search, setSearch] = useState("");
+  const [reset, setReset] = useState();
+  const [show, setShowAdd] = useState(false);
+  const [show1, setShowEdit] = useState(0);
+  const [option, setOption] = useState();
+  const [categories, setCategories] = useState([]);
+  const [faq_category, setSearchCategory] = useState();
+  const [changeStatus, setChangeStatus] = useState();
+  const [totalPages, settotalPages] = useState();
+  const [onPageChange, setonPageChange] = useState(1);
+ const [searchDate, setSearchDate] = useState("");
+  const [searchDateTo, setSearchDateTo] = useState("");
+
+  const getDataAll = async () => {
+    const response = await getData(
+      `/admin/miscellaneous/data`
+    );
+    await setData(response);
+    setCurrentPage(response?.data?.current_page);
+    setperPage(response?.data?.per_page);
+    setSearch(response?.data?.search_name);
+    settotalPages(response?.data?.total_pages);
+    setOption(await Per_Page_Dropdown(response?.data?.total));
+  };
+  useEffect(() => {
+    getDataAll();
+  }, [changeStatus, perPage, reset, show, show1, search, faq_category, onPageChange,searchDateTo,searchDate]);
+
+  const handlePageChange = (pageNumber) => {
+    setonPageChange(pageNumber);
+  };
+
+  const paginationItems = [];
+  for (let page = 1; page <= totalPages; page++) {
+    paginationItems.push(
+      <Pagination.Item
+        key={page}
+        active={page === onPageChange}
+        onClick={() => handlePageChange(page)}
+      >
+        {page}
+      </Pagination.Item>
+    );
+  }
+
+  const ChangeStatus = async (id) => {
+    const response = await editStatusData(`/admin/miscellaneous/data/${id}`);
+    setChangeStatus(response);
+  };
+
+  // Delete module.....................................................
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [recordToDeleteId, setRecordToDeleteId] = useState(null);
+  const [recordToDeleteName, setRecordToDeleteName] = useState(null);
+
+  const showDeleteRecord = async (id, name) => {
+    setShowDeleteModal(true);
+    setRecordToDeleteId(id);
+    setRecordToDeleteName(name);
+  };
+
+  // Modal function
+  const handleClose = () => setShowAdd(false);
+  const handleShow = () => setShowAdd(true);
+
+  const handleClose1 = () => setShowEdit(0);
+  const handleShow1 = (id) => {
+    setShowEdit(id);
+  };
+
+  const DeleteRecord = async () => {
+    setShowDeleteModal(false);
+    if (recordToDeleteId) {
+      const response = await deleteData(`/admin/miscellaneous/data/${recordToDeleteId}`);
+      await ErrorNotify(recordToDeleteName);
+      setChangeStatus(response);
+      setRecordToDeleteId(null);
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setShowDeleteModal(false);
+    setRecordToDeleteId(null);
+  };
+
+  //toggle/
+  const [visible, setVisibel] = useState({
+    col0: true,
+    col1: true,
+    col2: true,
+    col3: true,
+    col4: true,
+    col5: true,
+    col6: true,
+  });
+
+  //toggle columnns.........
+  const toggleColumn = (event, columnName) => {
+    event.preventDefault();
+    setVisibel((prev) => ({
+      ...prev,
+      [columnName]: !prev[columnName],
+    }));
+  };
+
+  const [showModal, setShowModal] = useState({
+    code: 0,
+    message: "",
+  });
+
+  const [showoff, setShowoff] = useState(false);
+
+
+
+  const GetAllFaqCategory = async () => {
+    const response = await getData("/common/masters/all-miscellaneous-reason");
+    if (response?.success) {
+      setCategories(await Select2Data(response?.data, "miscellaneous_reason_id"));
+    }
+  };
+
+  useEffect(() => {
+    GetAllFaqCategory();
+  }, []);
+
+   const HandleDownload = async () => {
+    if (data?.data?.data?.length <= 0) {
+      alert("No record found");
+    } else {
+      try {
+        // await DownloadExcel(
+        //   // "/download-excel/download-users",
+        //   `/download-excel/download-users?term=${search || ""}&mobile=${mobile || ""}&from=${from || ""}&to=${to || ""}`,
+        //   "Users List"
+        // );
+        await getDownloadDataExcel(
+          `/admin/miscellaneous?term=${search || ""}&faq_category_id=${faq_category?.value || ""
+      }&from=${searchDate || ""}&to=${searchDateTo || ""}`,
+          null,
+          "Miscellaneous Data List"
+        );
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+  };
+
+  return (
+    <>
+      <div className="main-advancedashboard">
+        <Header title={"Miscellaneous Data"} link={"/admin/miscellaneous/data"} />
+        <div className="row">
+          <div className="row MainRowsec me-0 ms-0">
+            <section className="AdvanceDashboard">
+              <div className="col-xxl-12 col-xl-12 p-0 ">
+                <section className="Tabels tab-radio tab-radio">
+                  <div className="">
+                    {/* container */}
+                    <div className="row">
+                      <div className="col-xxl-2 col-xl-2 col-lg-4 col-md-6 col-sm-6 col-12 mt-lg-0 mt-md-2 mt-2">
+                        <div className="add me-3">
+                          {isAllow.includes(IDS.Faq.Add) ? (
+                            <Link
+                              // to="/admin/miscellaneous/data/add"
+                              type="button"
+                              className="btn btn-add pe-3"
+                            >
+                              <div onClick={() => handleShow()}>
+                                <img
+                                  src={plus}
+                                  className="plus me-2 ms-0"
+                                  alt=""
+                                />
+                                Add Miscellaneous Data
+                              </div>
+                            </Link>
+                          ) : (
+                            <></>
+                          )}
+                        </div>
+                      </div>
+                      {/* <div className="col-xxl-2 col-xl-2 col-lg-4 col-md-6 col-sm-6 col-12 mt-lg-0 mt-md-2 mt-2">
+                        <div className="add me-3">
+                          <div className="dropdown">
+                            <button
+                              className="btn btn-columns dropdown-toggle"
+                              type="button"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              <img
+                                src={colunms}
+                                className="columns me-2 "
+                                alt=""
+                              />
+                              Column Selection
+                              <img src={top} className="top ms-1" alt="" />
+                            </button>
+                            <ul className="dropdown-menu">
+                              <li>
+                                <Link
+                                  className="dropdown-item"
+                                  onClick={(event) =>
+                                    toggleColumn(event, "col1")
+                                  }
+                                  href="#"
+                                >
+                                  Sr. No.
+                                  {visible?.col1 ? (
+                                    <FontAwesomeIcon
+                                      className="ms-4"
+                                      icon="fa-solid fa-eye"
+                                    />
+                                  ) : (
+                                    <FontAwesomeIcon
+                                      className="ms-4"
+                                      icon="fa-solid fa-eye-slash"
+                                    />
+                                  )}
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  className="dropdown-item"
+                                  onClick={(event) =>
+                                    toggleColumn(event, "col2")
+                                  }
+                                  href="#"
+                                >
+                                  FAQ Category
+                                  {visible?.col2 ? (
+                                    <FontAwesomeIcon
+                                      className="ms-4"
+                                      icon="fa-solid fa-eye"
+                                    />
+                                  ) : (
+                                    <FontAwesomeIcon
+                                      className="ms-4"
+                                      icon="fa-solid fa-eye-slash"
+                                    />
+                                  )}
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  className="dropdown-item"
+                                  onClick={(event) =>
+                                    toggleColumn(event, "col3")
+                                  }
+                                  href="#"
+                                >
+                                  Question
+                                  {visible?.col3 ? (
+                                    <FontAwesomeIcon
+                                      className="ms-2"
+                                      icon="fa-solid fa-eye"
+                                    />
+                                  ) : (
+                                    <FontAwesomeIcon
+                                      className="ms-2"
+                                      icon="fa-solid fa-eye-slash"
+                                    />
+                                  )}
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  className="dropdown-item"
+                                  onClick={(event) =>
+                                    toggleColumn(event, "col6")
+                                  }
+                                  href="#"
+                                >
+                                  Answer
+                                  {visible?.col6 ? (
+                                    <FontAwesomeIcon
+                                      className="ms-2"
+                                      icon="fa-solid fa-eye"
+                                    />
+                                  ) : (
+                                    <FontAwesomeIcon
+                                      className="ms-2"
+                                      icon="fa-solid fa-eye-slash"
+                                    />
+                                  )}
+                                </Link>
+                              </li>
+
+                              <li>
+                                <Link
+                                  className="dropdown-item"
+                                  onClick={(event) =>
+                                    toggleColumn(event, "col4")
+                                  }
+                                  href="#"
+                                >
+                                  Status
+                                  {visible?.col4 ? (
+                                    <FontAwesomeIcon
+                                      className="ms-4"
+                                      icon="fa-solid fa-eye"
+                                    />
+                                  ) : (
+                                    <FontAwesomeIcon
+                                      className="ms-4"
+                                      icon="fa-solid fa-eye-slash"
+                                    />
+                                  )}
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  className="dropdown-item"
+                                  onClick={(event) =>
+                                    toggleColumn(event, "col5")
+                                  }
+                                  href="#"
+                                >
+                                  Action
+                                  {visible?.col5 ? (
+                                    <FontAwesomeIcon
+                                      className="ms-4"
+                                      icon="fa-solid fa-eye"
+                                    />
+                                  ) : (
+                                    <FontAwesomeIcon
+                                      className="ms-4"
+                                      icon="fa-solid fa-eye-slash"
+                                    />
+                                  )}
+                                </Link>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div> */}
+
+                      <div className="border-line mt-3"></div>
+                      <div className="row mt-3">
+                        <div className=" col-12">
+                          <div className="d-flex align-items-center mb-1">
+                            <div className="show me-2">
+                              <p className="show m-0">Show</p>
+                            </div>
+                            <div className="number me-2">
+                              <select
+                                className="form-select form-select-sm"
+                                aria-label=".form-select-sm example"
+                                onChange={(e) => { setonPageChange(1); setperPage(e.target.value) }}
+                              >
+                                {option?.map((option) => (
+                                  <option key={option} value={option}>
+                                    {option}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+                            <div className="entries">
+                              <p className="show m-0">entries</p>
+                            </div>
+                            <div className="sowing ms-3 me-2">
+                              <p className="show m-0">{`Showing ${Math.min(
+                                (currentPage - 1) * perPage + 1
+                              )} to ${Math.min(
+                                currentPage * perPage,
+                                data?.data?.total
+                              )} of ${data?.data?.total} entries`}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="   col-12">
+                          <div className="row align-items-start">
+                            <div className="col-xxl-3 col-xl-4 col-lg-4 col-md-6  col-sm-6 col-12 mb-2">
+                              <div className="num">
+                                <label className="form-label"></label>
+                                <Select
+                                  isSearchable
+                                  options={categories}
+                                  value={faq_category}
+                                  placeholder="Responsible Person"
+                                  onChange={(e) => {
+                                    setonPageChange(1);
+                                    setSearchCategory(e);
+                                  }}
+                                />
+                              </div>
+                            </div>
+                            <div className="col-xxl-3 col-xl-4 col-lg-4 col-md-6  col-sm-6 col-12 mb-2">
+                              <div className="num">
+                                <label className="form-label"></label>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  id=""
+                                  value={search}
+                                  placeholder="Reason"
+                                  onChange={(e) => {
+                                    setonPageChange(1);
+                                    setSearch(e.target.value);
+                                  }}
+                                />
+                              </div>
+                            </div>
+
+                               <div className="col-xxl-3 col-xl-4 col-lg-4 col-md-6  col-sm-6 col-12 mb-2">
+                                <div className="num me-2">
+                                  <label className="form-label">
+                                    Start Date
+                                  </label>
+                                   <input
+                                    type="date"
+                                    className="form-control"
+                                    placeholder="From"
+                                    value={searchDate}
+                                    max="2050-12-31"
+                                    
+                                    onChange={(e) => {
+                                      const selectedDate = e.target.value;
+
+
+                                      if (new Date(selectedDate).getFullYear() > 2050) {
+                                        return;
+                                      }
+
+                                      setSearchDate(selectedDate);
+                                      setonPageChange(1);
+                                    }}
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="col-xxl-3 col-xl-4 col-lg-4 col-md-6  col-sm-6 col-12 mb-2">
+                                <div className="num me-2">
+                                  <label className="form-label">End Date</label>
+                                  <input
+                                    type="date"
+                                    className="form-control"
+                                    placeholder="To"
+                                    value={searchDateTo}
+                                    max="2050-12-31"
+                                     min={searchDate}
+                                    onChange={(e) => {
+                                      const selectedDate = e.target.value;
+
+                                      // Safety check for manual typing
+                                      if (new Date(selectedDate).getFullYear() > 2050) {
+                                        return;
+                                      }
+
+                                      setSearchDateTo(selectedDate);
+                                      setonPageChange(1);
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            <div className="col-xxl-1 col-xl-2  col-lg-2  col-md-2  col-sm-6 col-12 mb-2">
+                              <div className="Search-1">
+                                <label className="form-label"></label>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setSearch("");
+                                    setSearchCategory("");
+                                    setSearchDateTo('');
+                                    setSearchDate('');
+                                    setReset(!reset);
+                                  }}
+                                  className="btn btn-reset"
+                                >
+                                  Reset
+                                </button>
+                              </div>
+                            </div>
+
+                             <div className="col-xl-2 col-lg-4 col-md-6 col-12 mb-2">
+                                <div>
+                                  <label className="form-label"></label>
+                                  <button
+                                    className="btn btn-success "
+                                    type="button"
+                                    onClick={HandleDownload}
+                                  >
+                                    Excel
+                                    <FontAwesomeIcon
+                                      icon="fa-solid fa-file-lines"
+                                      className="ms-2"
+                                    />
+                                  </button>
+                                </div>
+                              </div>
+                      
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="border-line mt-3"></div>
+                    <div className="row mt-3">
+                      <div className="data table-responsive">
+                        <Table striped bordered hover responsive center>
+                          <thead>
+                            <tr className="">
+                              {visible.col1 && <th className="sr">Sr. No.</th>}
+                              {visible.col2 && (
+                                <th className="tax-name">Responsible Person</th>
+                              )}
+                              {visible.col3 && (
+                                <th className="tax-name">Reason</th>
+                              )}
+                              {visible.col6 && (
+                                <th className="tax-name">Date</th>
+                              )}
+                               {visible.col6 && (
+                                <th className="tax-name">Rupees</th>
+                              )}
+
+                              {visible.col4 && (
+                                <th className="tax-name">Status</th>
+                              )}
+
+                              {visible.col5 && (
+                                <th className="active">Action</th>
+                              )}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {data?.data?.data?.map((d, index) => {
+                              const paginatedIndex =
+                                (onPageChange - 1) * perPage + index + 1;
+                              return (
+                                <tr className="" key={index}>
+                                  {visible.col1 && <td>{paginatedIndex}.</td>}
+                                  {visible.col2 && <td>{d?.Miscellaneous_Reason?.name}</td>}
+                                  {visible.col3 && <td>{d?.comment}</td>}
+                                  {visible.col6 && <td>{formatDateTimeNew(d?.date)}</td>}
+                                      {visible.col6 && <td>{d?.rupees}</td>}
+                                  {visible.col4 && (
+                                    <td>
+                                      <div className="form-check form-switch">
+                                        <input
+                                          className="form-check-input"
+                                          type="checkbox"
+                                          role="switch"
+                                          checked={d.status}
+                                          disabled={!isAllow?.includes(15)}
+                                          onChange={() => {
+                                            ChangeStatus(d.id);
+                                          }}
+                                          id={`flexSwitchCheckDefault${d?.id}`}
+                                        />
+                                        <label
+                                          className="form-check-label"
+                                          htmlFor={`flexSwitchCheckDefault${d?.id}`}
+                                        >
+                                          {d.status ? "Active" : "Inactive"}
+                                        </label>
+                                      </div>
+                                    </td>
+                                  )}
+                                  {visible.col5 && (
+                                    <td>
+                                      <div className="d-flex">
+                                        {isAllow.includes(IDS.Faq.Edit) ? (
+                                          <Button
+                                            // to={`/admin/miscellaneous/data/edit/${d?.id}`}
+                                            onClick={() => handleShow1(d?.id)}
+                                            type="button"
+                                            className="btn btn-primary me-1"
+                                          >
+                                            <img
+                                              src={pen}
+                                              className="pen"
+                                              alt=""
+                                            />
+                                          </Button>
+                                        ) : (
+                                          <></>
+                                        )}
+
+                                        {isAllow.includes(IDS.Faq.Delete) ? (
+                                          <button
+                                            onClick={() => {
+                                              showDeleteRecord(d?.id, d?.name);
+                                            }}
+                                            type="button"
+                                            className="btn btn-danger"
+                                          >
+                                            <img
+                                              src={basket}
+                                              className="pen"
+                                              alt=""
+                                            />
+                                          </button>
+                                        ) : (
+                                          <></>
+                                        )}
+                                      </div>
+                                    </td>
+                                  )}
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </Table>
+                        {data && data?.data?.data?.length > 0 ?
+                          <Pagination_Holder
+                            onPageChange={currentPage}
+                            totalPages={totalPages}
+                            handlePageChange={handlePageChange}
+                          /> : <p className="no-datashow">Sorry, No Data Found</p>}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      {show ? (
+        <AddOffCanvance
+          handleClose={handleClose}
+          setShow={setShowAdd}
+          show={show}
+        />
+      ) : (
+        ""
+      )}
+
+      {show1 ? (
+        <EditOffCanvance
+          handleClose={handleClose1}
+          setShow={setShowEdit}
+          show={show1}
+        />
+      ) : (
+        ""
+      )}
+
+      <ModelBulkUpload
+        message={showModal.message}
+        showErrorModal={showModal.code ? true : false}
+      />
+
+      <Toaster position="top-right" />
+
+      <OffcanvasCon show={showoff} handleClose={() => setShowoff(false)} />
+
+      {/* <!-- Modal Delete --> */}
+      <div className="upload-modal">
+        <div
+          className={`modal fade ${showDeleteModal ? "show" : ""}`}
+          style={{ display: showDeleteModal ? "block" : "none" }}
+          id="exampleModaldel"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog  modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-body">
+                <h1 className="add-success text-center  mt-2">
+                  Are you sure ?
+                </h1>
+                <p>
+                  Do You Really Want to Delete These Record?
+                  <br />
+                  Dependent Data Also Be Deleted And
+                  <br /> This Process CanNot Be Undone{" "}
+                </p>
+                <div className="button-holder text-center mt-2">
+                  <button className="btn btn-yes me-2" onClick={DeleteRecord}>
+                    Yes
+                  </button>
+                  <button className="btn btn-no" onClick={handleDeleteCancel}>
+                    No
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Tables;

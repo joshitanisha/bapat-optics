@@ -1,0 +1,43 @@
+.Black_btn_holder .Black_Btn  {
+    background: #000 0% 0% no-repeat padding-box !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 5px 15px;
+    width: 100%;
+}
+
+.Black_btn_holder .Black_Btn :hover {
+    background: #000 0% 0% no-repeat padding-box !important;
+    border: 1px solid #000 !important;
+    color: #ffffff !important;
+}
+
+/* .Black_btn_holder .Black_Btn :active {
+    background: #007c09 0% 0% no-repeat padding-box !important;
+    border: 1px solid #007c09 !important;
+    color: #ffffff !important;
+}
+
+.Black_btn_holder .Black_Btn .active {
+    background: #007c09 0% 0% no-repeat padding-box !important;
+    border: 1px solid #007c09 !important;
+    color: #ffffff !important;
+} */
+
+@media (min-width: 0px) and (max-width: 485px) {
+    .Black_btn_holder .Black_Btn  {
+        font-size: 13px;
+        padding: 3px 5px;
+    }
+}
+
+@media (min-width: 486px) and (max-width: 991px) {
+    .Black_btn_holder .Black_Btn  {
+        font-size: 10px;
+    }
+}

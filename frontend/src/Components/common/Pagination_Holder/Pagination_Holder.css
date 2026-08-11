@@ -1,0 +1,40 @@
+.main-pagination .page-link {
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 50px !important;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+}
+
+ .main-pagination   .active>.page-link {
+    border-color: #006e9c;
+    color: #fff;
+    background: #006e9c;
+}
+
+
+  .main-pagination   .page-link:focus {
+    box-shadow: none;
+}
+
+.main-pagination  .page-item {
+    margin: 0px 3px;
+}
+
+.main-pagination  .page-item:first-child .page-link {
+    color: #48164a;
+}
+
+
+.main-pagination  .page-item:last-child .page-link {
+    color: #48164a;
+}
+
+
+.main-pagination  .page-item.disabled .page-link {
+    color: #ccc;
+}
